@@ -1,5 +1,3 @@
-export const prerender = false;
-export const prerender = false;
 
 export const POST = async ({ request }) => {
   try {
