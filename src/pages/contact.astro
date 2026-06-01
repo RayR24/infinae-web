@@ -1,0 +1,211 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PrimaryNav from "../components/PrimaryNav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="Contact" description="Get in touch with Infinae.">
+  <PrimaryNav />
+  <main class="page">
+    <header class="hero">
+      <h1>Contact</h1>
+      <p class="intro">
+        Get in touch with us.
+      </p>
+    </header>
+
+    <section class="section">
+      <div class="section-content">
+        <form id="contact-form" method="POST" action="/api/intake">
+          <!-- Honeypot field (hidden from real users) -->
+          <input type="text" name="company_website" style="display:none" tabindex="-1" autocomplete="off" />
+          
+          <input type="hidden" name="source" value="contact_page" />
+          <input type="hidden" name="ml_group" value="General Enquiries" />
+          
+          <div class="form-group">
+            <label for="name">Full name *</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email address *</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone number *</label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" />
+          </div>
+          
+          <div class="form-group">
+            <label for="interest">Area of interest *</label>
+            <select id="interest" name="interest" required>
+              <option value="">Select one</option>
+              <option value="Advisory">Advisory</option>
+              <option value="Language of Luxury">Language of Luxury</option>
+              <option value="Institutions">Institutions</option>
+              <option value="General">General enquiry</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="budget_range">Budget range</label>
+            <select id="budget_range" name="budget_range">
+              <option value="">Select</option>
+              <option value="Under R5,000">Under R5,000</option>
+              <option value="R5,000 - R15,000">R5,000 - R15,000</option>
+              <option value="R15,000 - R30,000">R15,000 - R30,000</option>
+              <option value="R30,000+">R30,000+</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+          </div>
+          
+          <div class="form-group checkbox">
+            <label>
+              <input type="checkbox" name="consent" value="yes" required />
+              I agree to the processing of my information as described in the Privacy Policy. *
+            </label>
+          </div>
+          
+          <button type="submit" class="cta">Submit enquiry</button>
+          
+          <div id="form-status" style="margin-top: 20px;"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const statusDiv = document.getElementById('form-status');
+  
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      statusDiv.innerHTML = '<p style="color: #1A3C34;">Submitting...</p>';
+      
+      const formData = new FormData(form);
+      
+      try {
+        const response = await fetch('/api/intake', {
+          method: 'POST',
+          body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
+          statusDiv.innerHTML = '<p style="color: #1A3C34;">Thank you. We will be in touch soon.</p>';
+          form.reset();
+        } else {
+          statusDiv.innerHTML = `<p style="color: #cc0000;">Error: ${result.error || 'Something went wrong. Please try again.'}</p>`;
+        }
+      } catch (error) {
+        statusDiv.innerHTML = '<p style="color: #cc0000;">Network error. Please try again.</p>';
+      }
+    });
+  }
+</script>
+
+<style>
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+  
+  .hero {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+  
+  h1 {
+    font-size: 3.2rem;
+    margin-bottom: 16px;
+    color: var(--green, #1A3C34);
+    font-weight: 350;
+  }
+  
+  .intro {
+    font-size: 1.3rem;
+    color: var(--text, #111111);
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.8;
+  }
+  
+  .section {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .form-group {
+    margin-bottom: 24px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text, #111111);
+    font-size: 0.95rem;
+  }
+  
+  input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border, #E5E5E5);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    background: white;
+  }
+  
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--gold, #D4AF37);
+  }
+  
+  .checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .checkbox input {
+    width: auto;
+    margin-top: 3px;
+  }
+  
+  .cta {
+    background: var(--gold, #D4AF37);
+    color: #111111;
+    border: none;
+    padding: 14px 36px;
+    border-radius: 40px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .cta:hover {
+    background: #c9a62f;
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 768px) {
+    .page { padding: 40px 20px; }
+    h1 { font-size: 2.6rem; }
+  }
+</style>

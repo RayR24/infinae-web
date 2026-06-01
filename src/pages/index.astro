@@ -1,0 +1,330 @@
+---
+// src/pages/index.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PrimaryNav from "../components/PrimaryNav.astro";
+import Footer from "../components/Footer.astro";
+
+const description =
+  "Infinae designs dining, service, and nourishment systems for luxury hospitality, experiences, and private institutions. Advisory, masterclasses, and bespoke partnerships.";
+---
+
+<BaseLayout title="Beyond time. Beyond taste." description={description}>
+  <PrimaryNav />
+
+  <main class="page">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__inner">
+        <p class="eyebrow">Luxury hospitality &nbsp;·&nbsp; Bespoke Experiences &nbsp;·&nbsp; Advisory</p>
+        <h1 class="hero__title">
+          Beyond time.<br /><em>Beyond taste.</em>
+        </h1>
+        <p class="hero__lede">
+          Infinae partners with discerning operators to design dining, service,
+          and nourishment systems that feel inevitable, not imposed.
+        </p>
+        <div class="hero__cta">
+          <a href="/advisory" class="btn btn--primary">Request a consultation</a>
+          <a href="/philosophy" class="btn btn--ghost">Read the philosophy →</a>
+        </div>
+        <p class="hero__meta">Based in Johannesburg · Engaging selectively</p>
+      </div>
+    </section>
+
+    <!-- FOUR PILLARS -->
+    <section class="pillars">
+      <article class="pillar">
+        <span class="pillar__num">01</span>
+        <h2 class="pillar__title">Philosophy</h2>
+        <p class="pillar__body">
+          We exist to restore balance by refining how food, service, and
+          environment operate within the luxury landscape.
+        </p>
+        <a href="/philosophy" class="pillar__link">Read philosophy →</a>
+      </article>
+
+      <article class="pillar">
+        <span class="pillar__num">02</span>
+        <h2 class="pillar__title">Advisory</h2>
+        <p class="pillar__body">
+          Strategic advisory for businesses that value identity, experience,
+          and operational clarity. Every engagement begins with a consultation.
+        </p>
+        <div class="pillar__links">
+          <a href="/advisory" class="pillar__link">Explore advisory →</a>
+          <a href="/advisory#intake" class="pillar__link pillar__link--accent">Request consultation →</a>
+        </div>
+      </article>
+
+      <article class="pillar">
+        <span class="pillar__num">03</span>
+        <h2 class="pillar__title">Language of Luxury</h2>
+        <p class="pillar__body">
+          The First Table: a private lunch masterclass at Four Seasons.
+          Confidence, presence, and ease at a formal table with fine dining,
+          caviar, and a luxury gift box.
+        </p>
+        <a href="https://www.webtickets.co.za/event.aspx?itemid=1592328921"
+           class="pillar__link" rel="noopener" target="_blank">Buy tickets →</a>
+      </article>
+
+      <article class="pillar">
+        <span class="pillar__num">04</span>
+        <h2 class="pillar__title">Bespoke Experiences</h2>
+        <p class="pillar__body">
+          Private experiences designed around hospitality — food, wine, service, atmosphere, and meaningful connection.
+        </p>
+        <a href="/experiences" class="pillar__link">Explore experiences →</a>
+      </article>
+    </section>
+
+    <!-- SELECTIVE ENGAGEMENT -->
+    <section class="selective">
+      <div class="selective__inner">
+        <p class="eyebrow">Selective engagement</p>
+        <h2 class="selective__title">
+          Infinae works with a limited number of partners each season.
+        </h2>
+        <p class="selective__body">
+          We do not take on every enquiry. The intake conversation is where we
+          decide together whether the work is a fit. If it is, you'll feel
+          the difference in the first month.
+        </p>
+        <a href="/advisory#intake" class="btn btn--primary">Begin the conversation</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  :root {
+    --ink: #1a1715;
+    --paper: #f6f1e8;
+    --paper-deep: #ede5d5;
+    --accent: #c9a961;   /* muted gold */
+    --rule: rgba(26, 23, 21, 0.12);
+    --serif: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+    --sans: "Inter Tight", "Neue Haas Grotesk", system-ui, sans-serif;
+  }
+
+  .page {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.55;
+  }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.65;
+    margin: 0 0 1.75rem;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    place-items: center;
+    padding: 8rem 2rem 6rem;
+    position: relative;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 3rem;
+    width: 1px;
+    height: 3.5rem;
+    background: var(--ink);
+    opacity: 0.35;
+  }
+
+  .hero__inner {
+    max-width: 64ch;
+    text-align: center;
+    animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .hero__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.75rem, 7vw, 5.75rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0 0 2rem;
+  }
+
+  .hero__title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero__lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    line-height: 1.5;
+    max-width: 48ch;
+    margin: 0 auto 2.75rem;
+    opacity: 0.85;
+  }
+
+  .hero__cta {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .hero__meta {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin: 0;
+  }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.35s ease;
+  }
+
+  .btn--primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent);
+    color: var(--ink);
+  }
+
+  .btn--ghost {
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 1rem 0;
+  }
+
+  .btn--ghost:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* PILLARS */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid var(--rule);
+  }
+
+  .pillar {
+    padding: 5rem 4rem;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.4s ease;
+  }
+
+  .pillar:nth-child(2n) { border-right: none; }
+  .pillar:hover { background: var(--paper-deep); }
+
+  .pillar__num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  .pillar__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 2.25rem;
+    margin: 0 0 1.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  .pillar__body {
+    max-width: 42ch;
+    margin: 0 0 1.75rem;
+    opacity: 0.8;
+  }
+
+  .pillar__link,
+  .pillar__link--accent {
+    display: inline-block;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 3px;
+    margin-right: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .pillar__link--accent {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .pillar__link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* SELECTIVE */
+  .selective {
+    padding: 8rem 2rem;
+    text-align: center;
+  }
+
+  .selective__inner {
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+
+  .selective__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    line-height: 1.2;
+    margin: 0 0 1.75rem;
+  }
+
+  .selective__body {
+    margin: 0 0 2.75rem;
+    opacity: 0.8;
+  }
+
+  /* ANIMATIONS */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 720px) {
+    .pillars { grid-template-columns: 1fr; }
+    .pillar { padding: 3.5rem 1.75rem; border-right: none; }
+    .hero { padding: 6rem 1.5rem 4rem; }
+  }
+</style>
+// test webhook

@@ -1,0 +1,200 @@
+---
+// src/components/PrimaryNav.astro
+const pathname = Astro.url.pathname;
+const isActive = (path: string) =>
+  pathname === path || pathname === `${path}/` ? "nav__link--active" : "";
+---
+
+<header class="nav" id="primaryNav">
+  <div class="nav__inner">
+    <a href="/" class="nav__brand" aria-label="Infinae home">
+      <img src="/images/logo.png" alt="Infinae" class="nav__logo" />
+    </a>
+
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" id="navToggle">
+      <span></span><span></span>
+    </button>
+
+    <nav class="nav__menu" id="navMenu" aria-label="Primary">
+      <a href="/philosophy" class={`nav__link ${isActive("/philosophy")}`}>Philosophy</a>
+      <a href="/language-of-luxury" class={`nav__link ${isActive("/language-of-luxury")}`}>Language of Luxury</a>
+      <a href="/advisory" class={`nav__link ${isActive("/advisory")}`}>Advisory</a>
+      <a href="/experiences" class={`nav__link ${isActive("/experiences")}`}>Bespoke Experiences</a>
+      <a href="/advisory#intake" class="nav__cta">Consultation</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Mobile toggle
+  const toggle = document.getElementById("navToggle");
+  const menu = document.getElementById("navMenu");
+  toggle?.addEventListener("click", () => {
+    const open = menu?.classList.toggle("nav__menu--open");
+    toggle.setAttribute("aria-expanded", String(!!open));
+  });
+
+  // Scroll state: condense nav after scroll
+  const navEl = document.getElementById("primaryNav");
+  const onScroll = () => {
+    if (window.scrollY > 40) navEl?.classList.add("nav--scrolled");
+    else navEl?.classList.remove("nav--scrolled");
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+</script>
+
+<style>
+  :root {
+    --ink: #1a1715;
+    --paper: #f6f1e8;
+    --accent: #c9a961;
+    --rule: rgba(26, 23, 21, 0.12);
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter Tight", system-ui, sans-serif;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(246, 241, 232, 0);
+    backdrop-filter: blur(0);
+    transition: background 0.4s ease, backdrop-filter 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .nav--scrolled {
+    background: rgba(246, 241, 232, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom-color: var(--rule);
+  }
+
+  .nav__inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: padding 0.4s ease;
+  }
+
+  .nav--scrolled .nav__inner {
+    padding: 1rem 2rem;
+  }
+
+  .nav__brand {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav__logo {
+    height: 32px;
+    width: auto;
+    display: block;
+  }
+
+  .nav__menu {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .nav__link {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+
+  .nav__link:hover { border-bottom-color: var(--ink); }
+  .nav__link--active { border-bottom-color: var(--accent); color: var(--accent); }
+
+  .nav__cta {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    background: var(--ink);
+    color: var(--paper);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .nav__cta:hover { background: var(--accent); color: var(--ink); }
+
+  /* Mobile toggle */
+  .nav__toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    padding: 0;
+  }
+
+  .nav__toggle span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--ink);
+    transition: transform 0.3s ease;
+  }
+
+  @media (max-width: 860px) {
+    .nav__toggle { display: flex; }
+
+    .nav__logo {
+      height: 28px;
+    }
+
+    .nav__menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+      padding: 1.5rem 2rem 2rem;
+      transform: translateY(-10px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+
+    .nav__menu--open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav__link {
+      width: 100%;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav__cta {
+      width: 100%;
+      text-align: center;
+      margin-top: 1rem;
+    }
+  }
+</style>

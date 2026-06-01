@@ -1,0 +1,285 @@
+---
+// src/pages/language-of-luxury.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PrimaryNav from "../components/PrimaryNav.astro";
+import Footer from "../components/Footer.astro";
+
+const title = "The First Table | Language of Luxury";
+const description = "A private lunch masterclass at Four Seasons. Confidence, presence, and ease at a formal table with fine dining, caviar, and a luxury gift box. Limited seats available.";
+---
+
+<BaseLayout title={title} description={description}>
+  <PrimaryNav />
+
+  <main class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <p class="eyebrow">Language of Luxury</p>
+      <h1 class="header__title">
+        The First <em>Table</em>
+      </h1>
+    </header>
+
+    <!-- OPENING -->
+    <section class="opening">
+      <div class="opening__inner">
+        <p class="lede">
+          Edition 1 — a private lunch masterclass for professionals, founders, and the socially ambitious.
+        </p>
+        <p>
+          Set in a beautiful private space at Four Seasons, this intimate experience includes guided teaching, a caviar lesson, and a fine dining lunch to help guests feel more at ease in formal dining spaces.
+        </p>
+        <p>
+          Your ticket includes a welcome drink on arrival, a guided masterclass, a fine dining lunch with wine or non alcoholic pairings, and a luxury gift box to take home.
+        </p>
+      </div>
+    </section>
+
+    <!-- OFFERINGS (no numbers, clean list) -->
+    <section class="offerings">
+      <h2 class="offerings__title">Your Afternoon at Four Seasons</h2>
+
+      <div class="offerings-list">
+        <div class="offering-item">
+          <h3>The Welcome</h3>
+          <p>Begin with a welcome drink on arrival and settle into the experience in a beautiful setting before the masterclass begins.</p>
+        </div>
+
+        <div class="offering-item">
+          <h3>The Lesson</h3>
+          <p>A guided masterclass on confidence, presence, and ease at a formal table, with thoughtful teaching throughout the afternoon.</p>
+        </div>
+
+        <div class="offering-item">
+          <h3>The Table</h3>
+          <p>Enjoy a caviar lesson and a fine dining lunch with wine or non alcoholic pairings, designed to bring the learning to life in real time.</p>
+        </div>
+
+        <div class="offering-item">
+          <h3>The Gift</h3>
+          <p>End the afternoon with a luxury gift box to take home as a lasting part of the experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="cta__inner">
+        <h2 class="cta__title">Tickets are now available.</h2>
+        <p class="cta__body">
+          Limited seats available for this intimate masterclass.
+        </p>
+        <a href="https://www.webtickets.co.za/event.aspx?itemid=1592328921" class="btn btn--primary" target="_blank" rel="noopener">
+          Buy Tickets on Webtickets
+        </a>
+      </div>
+    </section>
+
+    <!-- MAILERLITE NEWSLETTER -->
+    <div class="newsletter-section">
+      <div class="ml-embedded" data-form="CVX0iQ"></div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<!-- MailerLite Universal Script -->
+<script is:inline>
+  (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+  .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+  n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+  (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+  ml('account', '2257765');
+</script>
+
+<style>
+  :root {
+    --ink: #1a1715;
+    --paper: #f6f1e8;
+    --paper-deep: #ede5d5;
+    --accent: #c9a961;
+    --rule: rgba(26, 23, 21, 0.12);
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter Tight", system-ui, sans-serif;
+  }
+
+  .page {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin: 0 0 1.75rem;
+  }
+
+  /* HEADER */
+  .header {
+    min-height: 70vh;
+    display: grid;
+    place-items: center;
+    padding: 8rem 2rem 4rem;
+    text-align: center;
+  }
+
+  .header__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+
+  .header__title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* OPENING */
+  .opening {
+    padding: 4rem 2rem 6rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .opening__inner {
+    max-width: 38rem;
+    margin: 0 auto;
+  }
+
+  .lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    line-height: 1.4;
+    margin: 0 0 2.5rem;
+    color: var(--ink);
+  }
+
+  .opening p {
+    font-size: 1.05rem;
+    margin: 0 0 1.5rem;
+    opacity: 0.85;
+  }
+
+  /* OFFERINGS (clean list, no numbers) */
+  .offerings {
+    background: var(--paper-deep);
+    padding: 6rem 2rem;
+  }
+
+  .offerings__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    text-align: center;
+    margin: 0 0 4rem;
+    opacity: 0.8;
+  }
+
+  .offerings-list {
+    max-width: 38rem;
+    margin: 0 auto;
+  }
+
+  .offering-item {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .offering-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .offering-item h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .offering-item p {
+    margin: 0;
+    opacity: 0.85;
+    line-height: 1.7;
+    max-width: 42ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* CTA */
+  .cta {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .cta__inner {
+    max-width: 38rem;
+    margin: 0 auto;
+  }
+
+  .cta__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin: 0 0 1rem;
+  }
+
+  .cta__body {
+    font-family: var(--serif);
+    font-style: italic;
+    margin: 0 0 2.5rem;
+    opacity: 0.85;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.35s ease;
+  }
+
+  .btn--primary {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent);
+  }
+
+  /* NEWSLETTER SECTION */
+  .newsletter-section {
+    max-width: 38rem;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+  }
+
+  @media (max-width: 600px) {
+    .header {
+      padding: 6rem 1.5rem 3rem;
+      min-height: 60vh;
+    }
+    .offering-item h3 {
+      font-size: 1.4rem;
+    }
+  }
+</style>

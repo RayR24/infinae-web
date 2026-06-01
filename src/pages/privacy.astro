@@ -1,0 +1,213 @@
+---
+import PrimaryNav from "@/components/PrimaryNav.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<PrimaryNav />
+
+<main class="page">
+  <header class="hero">
+    <h1>Privacy Policy</h1>
+    <p class="intro">Last updated: 2026-02-15</p>
+  </header>
+
+  <section class="section">
+    <div class="section-content">
+      <h2>Purpose</h2>
+      <p>
+        Infinae collects information you submit through our forms to evaluate your request,
+        communicate with you, and, where relevant, deliver services.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-content">
+      <h2>What we collect</h2>
+      <p>
+        This may include your name, contact details, location, service interest, budget range,
+        and any optional context you provide.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-content">
+      <h2>How we use it</h2>
+      <p>
+        We use your information to review fit, manage enquiries, and contact you regarding
+        next steps.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-content">
+      <h2>Storage and access</h2>
+      <p>
+        Submissions are stored in internal systems used for enquiry handling. Access is limited
+        to authorised persons involved in review and service delivery.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-content">
+      <h2>Retention</h2>
+      <p>
+        We retain submissions only as long as necessary for evaluation, operational needs,
+        and legal compliance.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-content">
+      <h2>Your rights</h2>
+      <p>
+        You may request access, correction, or deletion of your information, subject to legal
+        requirements.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-content">
+      <h2>Contact</h2>
+      <p>
+        For privacy requests, contact: <strong>support@infinae.co.za</strong>
+      </p>
+    </div>
+  </section>
+</main>
+
+<Footer />
+
+<style>
+  .page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+
+  /* Hero - matches advisory page exactly */
+  .hero {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+    margin-bottom: 16px;
+    color: var(--green, #1A3C34);
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .intro {
+    font-size: 1rem;
+    color: var(--muted, #444444);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+    opacity: 0.75;
+  }
+
+  /* Sections - matches advisory page exactly */
+  .section {
+    text-align: center;
+    margin-bottom: 70px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.3s ease;
+  }
+
+  .section:last-of-type {
+    margin-bottom: 40px;
+  }
+
+  .section-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 2rem;
+    color: var(--green, #1A3C34);
+    font-weight: 350;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Gold underline that appears on hover - matches advisory */
+  h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 40px;
+    height: 2px;
+    background: var(--gold, #D4AF37);
+    transition: transform 0.3s ease;
+  }
+
+  .section:hover h2::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  p {
+    color: var(--text, #111111);
+    line-height: 1.8;
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+  }
+
+  .section:hover p {
+    opacity: 1;
+  }
+
+  strong {
+    color: var(--green, #1A3C34);
+    font-weight: 500;
+  }
+
+  /* Responsive - matches advisory exactly */
+  @media (max-width: 768px) {
+    .page { padding: 40px 20px; }
+    
+    h1 { 
+      font-size: 2.6rem; 
+    }
+    
+    .hero {
+      margin-bottom: 60px;
+    }
+    
+    .section { 
+      margin-bottom: 50px; 
+    }
+    
+    h2 { 
+      font-size: 1.8rem; 
+      margin-bottom: 20px;
+    }
+    
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    
+    h2::after {
+      width: 30px;
+      height: 1px;
+      bottom: -8px;
+    }
+  }
+</style>

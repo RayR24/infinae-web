@@ -1,0 +1,296 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PrimaryNav from "../components/PrimaryNav.astro";
+import Footer from "../components/Footer.astro";
+
+const title = "Bespoke Experiences | Infinae";
+const description = "Private experiences designed around hospitality — food, wine, service, atmosphere, and meaningful connection.";
+---
+
+<BaseLayout title="Bespoke Experiences" description={description}>
+  <PrimaryNav />
+
+  <main class="page">
+    <header class="header">
+      <p class="eyebrow">Bespoke Experiences</p>
+      <h1 class="header__title">
+        Private moments,<br /><em>thoughtfully designed</em>
+      </h1>
+      <p class="header__lede">
+        Infinae creates private experiences shaped around food, wine, service, atmosphere, and meaningful connection.
+      </p>
+    </header>
+
+    <!-- Opening -->
+    <section class="opening">
+      <div class="opening__inner">
+        <p class="lede">
+          Each experience is designed around the people attending, the occasion being celebrated, and the feeling the host wishes to create.
+        </p>
+        <p>
+          We work alongside carefully selected partners to curate and coordinate every element required to bring the experience to life.
+        </p>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="pillars">
+      <h2 class="pillars__title">How it works</h2>
+
+      <article class="pillar">
+        <span class="pillar__num">01</span>
+        <div class="pillar__body">
+          <h3 class="pillar__heading">We discuss</h3>
+          <p>The occasion, number of guests, location, budget, objectives, and preferred style and atmosphere.</p>
+        </div>
+      </article>
+
+      <article class="pillar">
+        <span class="pillar__num">02</span>
+        <div class="pillar__body">
+          <h3 class="pillar__heading">Bespoke proposal</h3>
+          <p>Following the discussion, Infinae prepares a tailored proposal that reflects your vision.</p>
+        </div>
+      </article>
+
+      <article class="pillar">
+        <span class="pillar__num">03</span>
+        <div class="pillar__body">
+          <h3 class="pillar__heading">Experience management</h3>
+          <p>For clients who require additional support, Infinae can oversee supplier coordination and execution.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- What's Included (Pull Quote) -->
+    <section class="pull">
+      <blockquote class="pull__quote">
+        Venue coordination · Chef coordination<br />
+        <em>Wine & beverage · Guest logistics</em>
+      </blockquote>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="cta__inner">
+        <h2 class="cta__title">Begin a conversation.</h2>
+        <p class="cta__body">
+          Let us help you create a private experience that feels effortless and unforgettable.
+        </p>
+        <a href="mailto:hello@infinae.co.za" class="btn btn--primary">Enquire about experiences</a>
+      </div>
+    </section>
+  </main>
+
+    <Footer />
+</BaseLayout>
+
+<style>
+  :root {
+    --ink: #1a1715;
+    --paper: #f6f1e8;
+    --paper-deep: #ede5d5;
+    --accent: #c9a961;
+    --rule: rgba(26, 23, 21, 0.12);
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter Tight", system-ui, sans-serif;
+  }
+
+  .page {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin: 0 0 1.75rem;
+  }
+
+  .header {
+    min-height: 70vh;
+    display: grid;
+    place-items: center;
+    padding: 8rem 2rem 4rem;
+    text-align: center;
+  }
+
+  .header__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+  }
+
+  .header__title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header__lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    max-width: 48ch;
+    margin: 0 auto;
+    opacity: 0.85;
+  }
+
+  .opening {
+    padding: 4rem 2rem 6rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .opening__inner {
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+
+  .lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    line-height: 1.4;
+    margin: 0 0 2.5rem;
+  }
+
+  .opening p {
+    font-size: 1.05rem;
+    margin: 0 0 1.5rem;
+    opacity: 0.85;
+  }
+
+  .pillars {
+    background: var(--paper-deep);
+    padding: 6rem 2rem;
+  }
+
+  .pillars__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    text-align: center;
+    margin: 0 0 4rem;
+    opacity: 0.8;
+  }
+
+  .pillar {
+    max-width: 44rem;
+    margin: 0 auto 3.5rem;
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+  }
+
+  .pillar:last-child {
+    margin-bottom: 0;
+  }
+
+  .pillar__num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--accent);
+  }
+
+  .pillar__heading {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .pillar__body p {
+    margin: 0;
+    max-width: 42ch;
+    opacity: 0.85;
+  }
+
+  .pull {
+    padding: 8rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+  }
+
+  .pull__quote {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.5rem;
+  }
+
+  .pull__quote em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .cta {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .cta__inner {
+    max-width: 38rem;
+    margin: 0 auto;
+  }
+
+  .cta__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin: 0 0 1rem;
+  }
+
+  .cta__body {
+    font-family: var(--serif);
+    font-style: italic;
+    margin: 0 0 2rem;
+    opacity: 0.85;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.35s ease;
+  }
+
+  .btn--primary {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent);
+    color: var(--ink);
+  }
+
+  @media (max-width: 600px) {
+    .pillar {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .header {
+      padding: 6rem 1.5rem 3rem;
+      min-height: 60vh;
+    }
+  }
+</style>

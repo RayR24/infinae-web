@@ -1,0 +1,158 @@
+---
+import PrimaryNav from "@/components/PrimaryNav.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<PrimaryNav />
+
+<main class="page">
+  <header class="hero">
+    <h1>Refund Policy</h1>
+    <p class="intro">
+      Last updated: March 2026
+    </p>
+  </header>
+
+  <section class="section">
+    <div class="section-content">
+      <h2>Advisory & Language of Luxury</h2>
+      
+      <div class="policy-block">
+        <h3>Cancellation within 48 hours of booking</h3>
+        <p>
+          If you cancel your booking at least 48 hours before the scheduled start time, 
+          you will receive a full refund minus a <strong>10% administration fee</strong> 
+          to cover processing and administrative costs.
+        </p>
+      </div>
+
+      <div class="policy-block">
+        <h3>Cancellation within 24 hours of booking</h3>
+        <p>
+          If you cancel within 24 hours of the scheduled start time, <strong>no refund</strong> 
+          will be issued. This includes no-shows and late arrivals.
+        </p>
+      </div>
+
+      <div class="policy-note">
+        <p>
+          All refund requests must be submitted in writing to 
+          <a href="mailto:support@infinae.co.za">support@infinae.co.za</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<Footer />
+
+<style>
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+
+  .hero {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    color: var(--green, #1A3C34);
+    font-weight: 350;
+    letter-spacing: -0.02em;
+  }
+
+  .intro {
+    font-size: 1rem;
+    color: var(--muted, #444444);
+  }
+
+  .section {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .section-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 2rem;
+    color: var(--green, #1A3C34);
+    font-weight: 350;
+    margin-bottom: 40px;
+    text-align: center;
+    letter-spacing: -0.01em;
+  }
+
+  .policy-block {
+    margin-bottom: 40px;
+    padding: 24px;
+    background: var(--soft, #f8f6f2);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .policy-block:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    color: var(--green, #1A3C34);
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: var(--text, #111111);
+    line-height: 1.7;
+    margin-bottom: 0;
+    font-size: 1.05rem;
+    opacity: 0.9;
+  }
+
+  .policy-note {
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid var(--border, rgba(0,0,0,0.08));
+    text-align: center;
+  }
+
+  .policy-note p {
+    font-size: 0.95rem;
+    color: var(--muted, #444444);
+  }
+
+  .policy-note a {
+    color: var(--green, #1A3C34);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .policy-note a:hover {
+    color: var(--gold, #D4AF37);
+  }
+
+  @media (max-width: 768px) {
+    .page { padding: 40px 20px; }
+    
+    h1 { font-size: 2.4rem; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.2rem; }
+    
+    .policy-block {
+      padding: 20px;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,437 @@
+---
+// src/pages/advisory.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PrimaryNav from "../components/PrimaryNav.astro";
+import Footer from "../components/Footer.astro";
+
+const description =
+  "Strategic advisory for luxury hospitality and institutional businesses. Selective engagements only. Begin with a consultation.";
+---
+
+<BaseLayout title="Advisory" description={description}>
+  <PrimaryNav />
+
+  <main class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <p class="eyebrow">Advisory</p>
+      <h1 class="header__title">
+        Strategic clarity for businesses<br />that value <em>identity</em>.
+      </h1>
+      <p class="header__lede">
+        Every engagement begins with a consultation. We listen first,
+        then recommend only what will move the operation forward.
+      </p>
+      <a href="#intake" class="btn btn--primary">Request a consultation</a>
+    </header>
+
+    <!-- WHAT WE SOLVE (NEW SECTION) -->
+    <section class="section what-we-solve">
+      <h2 class="section__title">What we solve</h2>
+      <div class="section__content">
+        <div class="solve-item">
+          <span class="solve-num">i.</span>
+          <div class="solve-text">
+            <h3>Operational inefficiency</h3>
+            <p>We identify where systems are wasting time, money, and resources to redesign for clarity and consistency.</p>
+          </div>
+        </div>
+        <div class="solve-item">
+          <span class="solve-num">ii.</span>
+          <div class="solve-text">
+            <h3>Inconsistent quality</h3>
+            <p>Standards drift when no structure holds them in place. We build the systems that make excellence the default.</p>
+          </div>
+        </div>
+        <div class="solve-item">
+          <span class="solve-num">iii.</span>
+          <div class="solve-text">
+            <h3>Misaligned values</h3>
+            <p>What an institution feeds its guests — and how — communicates more about its values than any brand statement.</p>
+          </div>
+        </div>
+        <div class="solve-item">
+          <span class="solve-num">iv.</span>
+          <div class="solve-text">
+            <h3>Long-term cost pressure</h3>
+            <p>We design nourishment systems that reduce waste, improve efficiency, and lower operational costs over time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT YOU CAN EXPECT -->
+    <section class="section">
+      <h2 class="section__title">What you can expect</h2>
+      <div class="section__content">
+        <p>Greater alignment between your brand and your operation.</p>
+        <p>Improved service consistency across every guest touchpoint.</p>
+        <p>Stronger financial performance through deliberate positioning.</p>
+        <p class="accent-text">
+          A business that feels coherent - designed, not assembled.
+        </p>
+      </div>
+    </section>
+
+    <!-- SELECTIVE ENGAGEMENT -->
+    <section class="section section--alt">
+      <h2 class="section__title">Selective engagement</h2>
+      <div class="section__content">
+        <p>Infinae works with a limited number of partners each season.</p>
+        <p>We do not take on every enquiry. The intake conversation is where we decide together whether the work is a fit.</p>
+      </div>
+    </section>
+
+    <!-- INTAKE FORM -->
+    <section class="intake" id="intake">
+      <div class="intake__inner">
+        <p class="eyebrow">Begin with a consultation</p>
+        <h2 class="intake__title">
+          Every advisory engagement begins with a conversation.
+        </h2>
+        <p class="intake__lede">
+          Share a little about your business and we'll be in touch
+          within two working days to schedule a consultation.
+        </p>
+
+        <form id="advisory-form" class="form" action="/api/intake" method="POST">
+          <div class="form__row">
+            <label class="form__field">
+              <span class="form__label">Full name *</span>
+              <input type="text" name="name" required />
+            </label>
+
+            <label class="form__field">
+              <span class="form__label">Email address *</span>
+              <input type="email" name="email" required />
+            </label>
+          </div>
+
+          <div class="form__row">
+            <label class="form__field">
+              <span class="form__label">Phone number *</span>
+              <input type="tel" name="phone" required />
+            </label>
+
+            <label class="form__field">
+              <span class="form__label">City *</span>
+              <input type="text" name="city" required />
+            </label>
+          </div>
+
+          <label class="form__field">
+            <span class="form__label">Business stage *</span>
+            <select name="stage" required>
+              <option value="">Select a stage…</option>
+              <option value="concept">Concept</option>
+              <option value="pre-launch">Pre-launch</option>
+              <option value="operating">Operating</option>
+              <option value="repositioning">Repositioning</option>
+            </select>
+          </label>
+
+          <label class="form__field">
+            <span class="form__label">Budget range (optional)</span>
+            <select name="budget">
+              <option value="">Prefer to discuss</option>
+              <option>Under R50,000</option>
+              <option>R50,000 – R150,000</option>
+              <option>R150,000 – R500,000</option>
+              <option>R500,000+</option>
+            </select>
+          </label>
+
+          <label class="form__field">
+            <span class="form__label">Tell us about your business</span>
+            <textarea name="message" rows="5"
+              placeholder="What's prompting this enquiry? What does success look like in 12 months?"></textarea>
+          </label>
+
+          <label class="form__consent">
+            <input type="checkbox" name="consent" required />
+            <span>I agree to the processing of my information in accordance with the Privacy Policy.</span>
+          </label>
+
+          <button type="submit" class="btn btn--primary btn--submit">
+            Request consultation
+          </button>
+
+          <div id="form-status" style="margin-top: 20px;"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('advisory-form');
+  const statusDiv = document.getElementById('form-status');
+  
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      statusDiv.innerHTML = '<p style="color: #1A3C34;">Submitting...</p>';
+      
+      const formData = new FormData(form);
+      
+      try {
+        const response = await fetch('/api/intake', {
+          method: 'POST',
+          body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
+          statusDiv.innerHTML = '<p style="color: #1A3C34;">Thank you. We will be in touch soon.</p>';
+          form.reset();
+        } else {
+          statusDiv.innerHTML = `<p style="color: #cc0000;">Error: ${result.error || 'Something went wrong. Please try again.'}</p>`;
+        }
+      } catch (error) {
+        statusDiv.innerHTML = '<p style="color: #cc0000;">Network error. Please try again.</p>';
+      }
+    });
+  }
+</script>
+
+<style>
+  :root {
+    --ink: #1a1715;
+    --paper: #f6f1e8;
+    --paper-deep: #ede5d5;
+    --accent: #c9a961;
+    --rule: rgba(26, 23, 21, 0.12);
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter Tight", system-ui, sans-serif;
+  }
+
+  .page {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.55;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin: 0 0 1.75rem;
+  }
+
+  /* HEADER */
+  .header {
+    padding: 9rem 2rem 5rem;
+    max-width: 64rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .header__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 2rem;
+  }
+
+  .header__title em { font-style: italic; color: var(--accent); }
+
+  .header__lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+    max-width: 50ch;
+    margin: 0 auto 2.5rem;
+    opacity: 0.85;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 5rem 2rem;
+    max-width: 64rem;
+    margin: 0 auto;
+    border-top: 1px solid var(--rule);
+  }
+
+  .section--alt { background: var(--paper-deep); max-width: none; }
+  .section--alt .section__title,
+  .section--alt .section__content { max-width: 64rem; margin-left: auto; margin-right: auto; }
+
+  .section__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin: 0 0 2rem;
+    text-align: center;
+  }
+
+  .section__content p {
+    font-size: 1.05rem;
+    max-width: 58ch;
+    margin: 0 auto 1rem;
+    text-align: center;
+    opacity: 0.85;
+  }
+
+  .accent-text {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--accent);
+    opacity: 1 !important;
+  }
+
+  /* WHAT WE SOLVE - numbered items */
+  .solve-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 48rem;
+    margin: 0 auto 2rem;
+    text-align: left;
+  }
+
+  .solve-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--accent);
+    min-width: 3rem;
+  }
+
+  .solve-text {
+    flex: 1;
+  }
+
+  .solve-text h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem;
+    color: var(--ink);
+  }
+
+  .solve-text p {
+    font-size: 0.95rem;
+    margin: 0;
+    text-align: left;
+    opacity: 0.85;
+  }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.35s ease;
+  }
+
+  .btn--primary { background: var(--ink); color: var(--paper); }
+  .btn--primary:hover { background: var(--accent); color: var(--ink); }
+  .btn--submit { width: 100%; margin-top: 1rem; padding: 1.25rem 2rem; }
+
+  /* INTAKE FORM */
+  .intake {
+    padding: 6rem 2rem 8rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .intake__inner { max-width: 42rem; margin: 0 auto; }
+
+  .intake__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+    line-height: 1.2;
+    margin: 0 0 1.25rem;
+    text-align: center;
+  }
+
+  .intake__lede {
+    font-family: var(--serif);
+    font-style: italic;
+    margin: 0 0 3rem;
+    text-align: center;
+    opacity: 0.85;
+  }
+
+  .form { display: grid; gap: 1.5rem; }
+
+  .form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .form__field { display: flex; flex-direction: column; }
+
+  .form__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    opacity: 0.7;
+  }
+
+  .form__field input,
+  .form__field select,
+  .form__field textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--ink);
+    padding: 0.6rem 0;
+    font-family: var(--sans);
+    font-size: 1rem;
+    color: var(--ink);
+    transition: border-color 0.3s ease;
+  }
+
+  .form__field input:focus,
+  .form__field select:focus,
+  .form__field textarea:focus {
+    outline: none;
+    border-bottom-color: var(--accent);
+  }
+
+  .form__field textarea { resize: vertical; }
+
+  .form__consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+
+  .form__consent input { margin-top: 0.25rem; accent-color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .form__row { grid-template-columns: 1fr; }
+    .header { padding: 6rem 1.5rem 3rem; }
+    .solve-item {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.5rem;
+    }
+    .solve-text h3,
+    .solve-text p {
+      text-align: center;
+    }
+  }
+</style>

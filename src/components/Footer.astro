@@ -1,0 +1,164 @@
+---
+// src/components/Footer.astro
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <p class="footer__wordmark">Infinae</p>
+      <p class="footer__tagline">
+        Beyond time.<br /><em>Beyond taste.</em>
+      </p>
+      <p class="footer__locale">Johannesburg, South Africa</p>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__heading">Infinae</h4>
+      <a href="/philosophy">Philosophy</a>
+      <a href="/advisory">Advisory</a>
+      <a href="/language-of-luxury">Language of Luxury</a>
+      <a href="/experiences">Bespoke Experiences</a>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__heading">Connect</h4>
+      <a href="https://www.instagram.com/infinaegroup" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/infinae-group-b79657393" rel="noopener">LinkedIn</a>
+      <a href="https://www.pinterest.com/infinaegroup" rel="noopener">Pinterest</a>
+      <a href="mailto:hello@infinae.co.za">hello@infinae.co.za</a>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__heading">Legal</h4>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms and Conditions</a>
+      <a href="/refund-policy">Refund Policy</a>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p>© {year} Infinae. All rights reserved.</p>
+    <p class="footer__crafted">Crafted with intention.</p>
+  </div>
+</footer>
+
+<style>
+  :root {
+    --ink: #1a1715;
+    --paper: #f6f1e8;
+    --accent: #c9a961;
+    --rule: rgba(246, 241, 232, 0.18);
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter Tight", system-ui, sans-serif;
+  }
+
+  .footer {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--sans);
+    font-weight: 300;
+    padding: 6rem 2rem 2rem;
+  }
+
+  .footer__inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .footer__wordmark {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 2rem;
+    letter-spacing: 0.06em;
+    margin: 0 0 1.25rem;
+  }
+
+  .footer__tagline {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    line-height: 1.3;
+    margin: 0 0 1.5rem;
+    opacity: 0.85;
+  }
+
+  .footer__tagline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .footer__locale {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin: 0;
+  }
+
+  .footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .footer__heading {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.5rem;
+  }
+
+  .footer__col a {
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 0.95rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, color 0.3s ease;
+  }
+
+  .footer__col a:hover {
+    opacity: 1;
+    color: var(--accent);
+  }
+
+  .footer__bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    opacity: 0.55;
+  }
+
+  .footer__bottom p { margin: 0; }
+  .footer__crafted { font-style: italic; font-family: var(--serif); font-size: 0.9rem; }
+
+  @media (max-width: 860px) {
+    .footer { padding: 4rem 1.5rem 2rem; }
+    .footer__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      padding-bottom: 3rem;
+    }
+    .footer__brand { grid-column: 1 / -1; }
+    .footer__bottom {
+      flex-direction: column;
+      gap: 0.75rem;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .footer__inner { grid-template-columns: 1fr; }
+  }
+</style>
