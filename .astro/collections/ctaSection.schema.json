@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "enable": {
+      "type": "boolean"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "button": {
+      "type": "object",
+      "properties": {
+        "enable": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "string"
+        },
+        "link": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "enable",
+        "label",
+        "link"
+      ]
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "enable",
+    "title",
+    "description",
+    "image",
+    "button"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "banner": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "button": {
+          "type": "object",
+          "properties": {
+            "enable": {
+              "type": "boolean"
+            },
+            "label": {
+              "type": "string"
+            },
+            "link": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "enable",
+            "label",
+            "link"
+          ]
+        }
+      },
+      "required": [
+        "title",
+        "content",
+        "image",
+        "button"
+      ]
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "bulletpoints": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "button": {
+            "type": "object",
+            "properties": {
+              "enable": {
+                "type": "boolean"
+              },
+              "label": {
+                "type": "string"
+              },
+              "link": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "enable",
+              "label",
+              "link"
+            ]
+          }
+        },
+        "required": [
+          "title",
+          "image",
+          "content",
+          "bulletpoints",
+          "button"
+        ]
+      }
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "banner",
+    "features"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "meta_title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "image": {
+      "type": "string"
+    },
+    "author": {
+      "default": "Admin",
+      "type": "string"
+    },
+    "categories": {
+      "default": [
+        "others"
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tags": {
+      "default": [
+        "others"
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "draft": {
+      "type": "boolean"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title"
+  ]
+}
