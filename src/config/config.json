@@ -1,0 +1,58 @@
+{
+  "site": {
+    "title": "Infinae",
+    "base_url": "https://infinae.vercel.app",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.png",
+    "logo": "/images/logo.png",
+    "logo_darkmode": "/images/logo-darkmode.png",
+    "logo_width": "150",
+    "logo_height": "30",
+    "logo_text": "Infinae"
+  },
+
+  "settings": {
+    "search": true,
+    "sticky_header": true,
+    "theme_switcher": true,
+    "default_theme": "system",
+    "pagination": 2,
+    "summary_length": 200,
+    "blog_folder": "blog"
+  },
+
+  "announcement": {
+    "enable": true,
+    "content": "<span class='text-center block'>Customize this announcement in config.json</span>",
+    "expire_days": 7
+  },
+
+  "params": {
+    "contact_form_action": "/api/intake",
+    "copyright": "© 2025 Infinae. All rights reserved."
+  },
+
+  "navigation_button": {
+    "enable": true,
+    "label": "Contact",
+    "link": "/contact"
+  },
+
+  "google_tag_manager": {
+    "enable": false,
+    "gtm_id": "GTM-XXXXXX"
+  },
+
+  "disqus": {
+    "enable": false,
+    "shortname": "your-disqus-name",
+    "settings": {}
+  },
+
+  "metadata": {
+    "meta_author": "Infinae",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "Your business description here"
+  }
+}

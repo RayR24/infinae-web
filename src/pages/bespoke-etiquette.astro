@@ -1,0 +1,398 @@
+---
+// src/pages/bespoke-etiquette.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PrimaryNav from "../components/PrimaryNav.astro";
+import Footer from "../components/Footer.astro";
+
+const description =
+  "Private etiquette training designed around the situations you want to feel more confident in. One to one and small group sessions covering dining, social and professional etiquette.";
+---
+
+<BaseLayout title="Bespoke Etiquette" description={description}>
+  <PrimaryNav />
+
+  <main class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <p class="eyebrow">Bespoke Etiquette</p>
+      <h1 class="header__title">
+        Tailored to<br /><em>you</em>
+      </h1>
+      <p class="header__lede">
+        Private etiquette training designed around the situations you want to feel more confident in.
+      </p>
+    </header>
+
+    <!-- OPENING -->
+    <section class="opening">
+      <div class="opening__inner">
+        <p class="lede">
+          Infinae offers one to one and small group sessions covering dining, social and professional etiquette in a practical and considered way.
+        </p>
+        <p>
+          The aim is not to teach rigid rules. It is to help you understand how to move through different settings with more awareness, confidence and ease.
+        </p>
+        <a href="mailto:hello@infinae.co.za" class="btn btn--primary">Enquire About a Session</a>
+      </div>
+    </section>
+
+    <!-- WHAT WE COVER -->
+    <section class="pillars">
+      <h2 class="pillars__title">What We Cover</h2>
+      <p class="pillars__intro">
+        Sessions are tailored to the individual or group and may include:
+      </p>
+
+      <div class="pillar pillar--full">
+        <ul class="cover-list">
+          <li>Dining etiquette and table confidence</li>
+          <li>Hosting and receiving guests</li>
+          <li>Professional and executive dining</li>
+          <li>Introductions and social interaction</li>
+          <li>Posture, presence and personal presentation</li>
+          <li>International and cross cultural etiquette</li>
+          <li>Service behaviour and guest interaction</li>
+          <li>Formal occasions and social settings</li>
+        </ul>
+        <p class="pillars__note">
+          The content is shaped around where you need greater confidence or preparation rather than following the same programme for every client.
+        </p>
+      </div>
+    </section>
+
+    <!-- PRIVATE LESSONS -->
+    <section class="opening opening--alt">
+      <div class="opening__inner">
+        <h2 class="opening__title">Private Lessons</h2>
+        <p>
+          Private lessons are designed for individuals who want focused attention and practical guidance.
+        </p>
+        <p>
+          They can be used to prepare for a specific occasion, build confidence over several sessions or strengthen areas that feel unfamiliar.
+        </p>
+        <p>
+          Lessons may take place privately or in a suitable dining setting where the learning can be applied in real time.
+        </p>
+        <a href="mailto:hello@infinae.co.za" class="btn btn--primary">Enquire About Private Lessons</a>
+      </div>
+    </section>
+
+    <!-- COUPLES AND FAMILIES -->
+    <section class="pillars">
+      <article class="pillar pillar--full">
+        <h2 class="pillar__title">Couples and Families</h2>
+        <p>
+          Etiquette can also be taught privately to couples and families.
+        </p>
+        <p>
+          Sessions may focus on dining, hosting, social confidence, travel, formal occasions or helping younger family members feel more comfortable in adult settings.
+        </p>
+        <p>
+          The approach is adapted to the age, experience and needs of the people taking part.
+        </p>
+        <a href="mailto:hello@infinae.co.za" class="btn btn--primary">Enquire About a Private Session</a>
+      </article>
+    </section>
+
+    <!-- SMALL GROUPS AND MASTERCLASSES -->
+    <section class="opening opening--alt">
+      <div class="opening__inner">
+        <h2 class="opening__title">Small Groups and Masterclasses</h2>
+        <p>
+          Infinae also offers tailored etiquette sessions for small groups.
+        </p>
+        <p>
+          These may be suitable for private groups, executives, client gatherings, young adults or organisations looking for a more focused and personal format.
+        </p>
+        <p>
+          Topics and structure are agreed before the session so the teaching remains relevant to the people in the room.
+        </p>
+        <a href="mailto:hello@infinae.co.za" class="btn btn--primary">Enquire About a Masterclass</a>
+      </div>
+    </section>
+
+    <!-- PRACTICAL, NOT PERFORMATIVE -->
+    <section class="pillars pillars--alt">
+      <article class="pillar pillar--full">
+        <h2 class="pillar__title">Practical</h2>
+        <p>
+          Good etiquette should make people feel more comfortable, not more self conscious.
+        </p>
+        <p>
+          The purpose of the training is to help you understand the setting, read the room and respond appropriately without feeling as though you are performing a set of rules.
+        </p>
+        <p>
+          Confidence comes from knowing what to do, why it matters and when the rules can be adapted.
+        </p>
+      </article>
+    </section>
+
+    <!-- TAILORED TO YOU -->
+    <section class="opening">
+      <div class="opening__inner">
+        <p>
+          Every client begins with a short conversation.
+        </p>
+        <p>
+          We discuss what you want to improve, the settings you are preparing for and the areas where you would like more confidence. From there, Infinae recommends the most suitable format and focus.
+        </p>
+        <a href="mailto:hello@infinae.co.za" class="btn btn--primary">Request a Consultation</a>
+      </div>
+    </section>
+
+    <!-- PULL QUOTE -->
+    <section class="pull">
+      <blockquote class="pull__quote">
+        Beyond time. <em>Beyond taste.</em>
+      </blockquote>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  :root {
+    --ink: #1a1715;
+    --paper: #f6f1e8;
+    --paper-deep: #ede5d5;
+    --accent: #c9a961;
+    --rule: rgba(26, 23, 21, 0.12);
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter Tight", system-ui, sans-serif;
+  }
+
+  .page {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin: 0 0 1.75rem;
+  }
+
+  /* HEADER */
+  .header {
+    min-height: 70vh;
+    display: grid;
+    place-items: center;
+    padding: 8rem 2rem 4rem;
+    text-align: center;
+  }
+
+  .header__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+  }
+
+  .header__title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header__lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    max-width: 48ch;
+    margin: 0 auto;
+    opacity: 0.85;
+  }
+
+  /* OPENING SECTIONS */
+  .opening {
+    padding: 5rem 2rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .opening--alt {
+    background: var(--paper-deep);
+  }
+
+  .opening__inner {
+    max-width: 42rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .opening__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+    margin: 0 0 2rem;
+    letter-spacing: -0.01em;
+  }
+
+  .lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    line-height: 1.4;
+    margin: 0 0 2.5rem;
+  }
+
+  .opening p {
+    font-size: 1.05rem;
+    margin: 0 0 1.5rem;
+    opacity: 0.85;
+  }
+
+  .opening .btn {
+    margin-top: 1.5rem;
+  }
+
+  /* PILLARS */
+  .pillars {
+    background: var(--paper-deep);
+    padding: 6rem 2rem;
+  }
+
+  .pillars--alt {
+    background: var(--paper);
+  }
+
+  .pillars__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    text-align: center;
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .pillars__intro {
+    text-align: center;
+    opacity: 0.8;
+    margin: 0 0 3rem;
+    font-size: 1.05rem;
+  }
+
+  .pillars__note {
+    text-align: center;
+    opacity: 0.75;
+    margin: 2rem 0 0;
+    font-size: 0.95rem;
+    font-style: italic;
+  }
+
+  .pillar {
+    max-width: 44rem;
+    margin: 0 auto;
+  }
+
+  .pillar--full {
+    text-align: center;
+  }
+
+  .pillar__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+    margin: 0 0 2rem;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+
+  .pillar p {
+    font-size: 1.05rem;
+    margin: 0 0 1.5rem;
+    opacity: 0.85;
+    text-align: center;
+  }
+
+  .pillar .btn {
+    margin-top: 1.5rem;
+  }
+
+  /* COVER LIST */
+  .cover-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 1rem;
+    max-width: 36rem;
+    text-align: left;
+  }
+
+  .cover-list li {
+    font-size: 1.05rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--rule);
+    opacity: 0.85;
+  }
+
+  .cover-list li:last-child {
+    border-bottom: none;
+  }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.35s ease;
+  }
+
+  .btn--primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent);
+    color: var(--ink);
+  }
+
+  /* PULL QUOTE */
+  .pull {
+    padding: 8rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+  }
+
+  .pull__quote {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .pull__quote em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .header {
+      padding: 6rem 1.5rem 3rem;
+      min-height: 60vh;
+    }
+
+    .opening,
+    .pillars {
+      padding: 4rem 1.5rem;
+    }
+
+    .pillar p,
+    .cover-list li {
+      font-size: 1rem;
+    }
+  }
+</style>

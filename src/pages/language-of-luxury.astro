@@ -1,0 +1,371 @@
+---
+// src/pages/language-of-luxury.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PrimaryNav from "../components/PrimaryNav.astro";
+import Footer from "../components/Footer.astro";
+
+const description =
+  "Private dining and bespoke hospitality experiences by Infinae. The Language of Luxury brings people together around food, conversation and considered hospitality.";
+---
+
+<BaseLayout title="The Language of Luxury" description={description}>
+  <PrimaryNav />
+
+  <main class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <p class="eyebrow">The Language of Luxury</p>
+      <h1 class="header__title">
+        Private dining and<br /><em>bespoke hospitality</em>
+      </h1>
+      <p class="header__lede">
+        The Language of Luxury brings people together around food and conversation.
+      </p>
+    </header>
+
+    <!-- OPENING -->
+    <section class="opening">
+      <div class="opening__inner">
+        <p class="lede">
+          Each edition begins with a reason for gathering.
+        </p>
+        <p>
+          From there, Infinae shapes the setting, menu, guest journey and details around the experience, working with selected venues, chefs, producers and partners where needed.
+        </p>
+        <p>
+          Some editions are created by Infinae and opened to a limited number of guests. Others can be developed privately around a particular occasion, group or idea.
+        </p>
+        <p>
+          The intention is not to create an event for the sake of having one. It is to create an experience that feels thoughtful from arrival to departure.
+        </p>
+      </div>
+    </section>
+
+    <!-- THE FIRST TABLE -->
+    <section class="pillars">
+      <h2 class="pillars__title">The First Table</h2>
+      <p class="pillars__subtitle">Edition 1</p>
+
+      <article class="pillar pillar--full">
+        <p>
+          The First Table marked the first edition of The Language of Luxury.
+        </p>
+        <p>
+          Hosted in a private dining space at Four Seasons Hotel The Westcliff, the afternoon brought together a small group of guests for caviar, wine, fine dining and guided conversation around confidence and ease at the table.
+        </p>
+        <p>
+          The experience combined learning with hospitality rather than separating the two. Guests were able to understand formal dining while experiencing it around the table in real time.
+        </p>
+        <p>
+          The afternoon included a welcome drink, a guided dining session, a caviar lesson and tasting, a three course lunch with wine and non alcoholic pairings, and a gift prepared for each guest.
+        </p>
+        <a href="https://www.instagram.com/infinaegroup" target="_blank" rel="noopener" class="btn btn--outline">
+          View The First Table on Instagram
+        </a>
+      </article>
+    </section>
+
+    <!-- EACH EDITION IS DIFFERENT -->
+    <section class="opening opening--alt">
+      <div class="opening__inner">
+        <h2 class="opening__title">Each Edition Is Different</h2>
+        <p>
+          The Language of Luxury is not built around one format.
+        </p>
+        <p>
+          An edition may take the form of a private lunch, dinner, tasting, cultural experience or intimate gathering.
+        </p>
+        <p>
+          The food, setting and people involved change according to the idea behind it. What remains consistent is the attention given to how guests move through the experience and how each element works with the next.
+        </p>
+        <p>
+          Future editions will be announced as they are developed.
+        </p>
+        <a href="mailto:hello@infinae.co.za" class="btn btn--primary">
+          Join the list
+        </a>
+      </div>
+    </section>
+
+    <!-- PRIVATE EXPERIENCES -->
+    <section class="pillars pillars--alt">
+      <article class="pillar pillar--full">
+        <h2 class="pillar__title">Private Experiences</h2>
+        <p>
+          The Language of Luxury can also be created privately.
+        </p>
+        <p>
+          Infinae works with individuals and selected partners to develop intimate dining and hospitality experiences around a particular occasion or group of guests.
+        </p>
+        <p>
+          This may include a private dinner, considered lunch, celebration, hosted tasting or another experience centred around food and hospitality.
+        </p>
+        <p>
+          We shape the concept and guest experience, then bring together the right specialists for what is required.
+        </p>
+        <p>
+          For larger events or work that sits outside our role, we collaborate with experienced event professionals rather than operating as a traditional event planning company.
+        </p>
+        <a href="mailto:hello@infinae.co.za" class="btn btn--primary">
+          Enquire About a Private Experience
+        </a>
+      </article>
+    </section>
+
+    <!-- UPCOMING EDITIONS -->
+    <section class="opening">
+      <div class="opening__inner">
+        <h2 class="opening__title">Upcoming Editions</h2>
+        <p>
+          New editions of The Language of Luxury are released selectively.
+        </p>
+        <p>
+          Join the list to hear about upcoming experiences, private tables and collaborations.
+        </p>
+        <a href="mailto:hello@infinae.co.za" class="btn btn--primary">
+          Join the list
+        </a>
+      </div>
+    </section>
+
+    <!-- PULL QUOTE -->
+    <section class="pull">
+      <blockquote class="pull__quote">
+        Beyond time. <em>Beyond taste.</em>
+      </blockquote>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  :root {
+    --ink: #1a1715;
+    --paper: #f6f1e8;
+    --paper-deep: #ede5d5;
+    --accent: #c9a961;
+    --rule: rgba(26, 23, 21, 0.12);
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter Tight", system-ui, sans-serif;
+  }
+
+  .page {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin: 0 0 1.75rem;
+  }
+
+  /* HEADER */
+  .header {
+    min-height: 70vh;
+    display: grid;
+    place-items: center;
+    padding: 8rem 2rem 4rem;
+    text-align: center;
+  }
+
+  .header__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+  }
+
+  .header__title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header__lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    max-width: 52ch;
+    margin: 0 auto;
+    opacity: 0.85;
+  }
+
+  /* OPENING SECTIONS */
+  .opening {
+    padding: 5rem 2rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .opening--alt {
+    background: var(--paper-deep);
+  }
+
+  .opening__inner {
+    max-width: 42rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .opening__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+    margin: 0 0 2rem;
+    letter-spacing: -0.01em;
+  }
+
+  .lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    line-height: 1.4;
+    margin: 0 0 2.5rem;
+  }
+
+  .opening p {
+    font-size: 1.05rem;
+    margin: 0 0 1.5rem;
+    opacity: 0.85;
+  }
+
+  .opening .btn {
+    margin-top: 1.5rem;
+  }
+
+  /* PILLARS */
+  .pillars {
+    background: var(--paper-deep);
+    padding: 6rem 2rem;
+  }
+
+  .pillars--alt {
+    background: var(--paper);
+  }
+
+  .pillars__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    text-align: center;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .pillars__subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--accent);
+    margin: 0 0 3rem;
+  }
+
+  .pillar {
+    max-width: 44rem;
+    margin: 0 auto;
+  }
+
+  .pillar--full {
+    text-align: center;
+  }
+
+  .pillar__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+    margin: 0 0 2rem;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+
+  .pillar p {
+    font-size: 1.05rem;
+    margin: 0 0 1.5rem;
+    opacity: 0.85;
+    text-align: center;
+  }
+
+  .pillar .btn {
+    margin-top: 1.5rem;
+  }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.35s ease;
+  }
+
+  .btn--primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent);
+    color: var(--ink);
+  }
+
+  .btn--outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+
+  .btn--outline:hover {
+    background: var(--accent);
+    color: var(--ink);
+    border-color: var(--accent);
+  }
+
+  /* PULL QUOTE */
+  .pull {
+    padding: 8rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+  }
+
+  .pull__quote {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .pull__quote em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .header {
+      padding: 6rem 1.5rem 3rem;
+      min-height: 60vh;
+    }
+
+    .opening,
+    .pillars {
+      padding: 4rem 1.5rem;
+    }
+
+    .pillar p {
+      font-size: 1rem;
+    }
+  }
+</style>

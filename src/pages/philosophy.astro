@@ -1,0 +1,317 @@
+---
+// src/pages/philosophy.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PrimaryNav from "../components/PrimaryNav.astro";
+import Footer from "../components/Footer.astro";
+
+const description =
+  "Infinae exists to bring greater clarity, consistency and intention to the way hospitality businesses operate and how people experience them.";
+---
+
+<BaseLayout title="Philosophy" description={description}>
+  <PrimaryNav />
+
+  <main class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <p class="eyebrow">Philosophy</p>
+      <h1 class="header__title">
+        Balance is the<br /><em>highest luxury</em>
+      </h1>
+    </header>
+
+    <!-- OPENING -->
+    <section class="opening">
+      <div class="opening__inner">
+        <p class="lede">
+          Infinae exists to bring greater clarity, consistency and intention to the way hospitality businesses operate and how people experience them.
+        </p>
+        <p>
+          The most memorable experiences are rarely defined by one grand gesture. They are shaped by many details working well together: the way a guest is welcomed, how a team communicates, the pace of service, what arrives at the table and whether the experience feels true to what the business promises.
+        </p>
+        <p>
+          When these elements work together, the experience feels natural. Nothing has to work too hard to prove itself.
+        </p>
+        <p>
+          Our role is to help businesses understand where that alignment is missing and build the standards, systems and thinking needed to strengthen it.
+        </p>
+      </div>
+    </section>
+
+    <!-- TENETS -->
+    <section class="tenets">
+      <h2 class="tenets__title">What we believe</h2>
+
+      <article class="tenet">
+        <span class="tenet__num">i.</span>
+        <div class="tenet__body">
+          <h3 class="tenet__heading">Coherence matters more than decoration</h3>
+          <p>
+            Luxury is not created by expensive finishes or beautiful presentation alone. What a business promises, how it operates and what the guest actually experiences should make sense together. When they do not, the gap is felt quickly.
+          </p>
+        </div>
+      </article>
+
+      <article class="tenet">
+        <span class="tenet__num">ii.</span>
+        <div class="tenet__body">
+          <h3 class="tenet__heading">Good service begins before the guest arrives</h3>
+          <p>
+            Consistent service cannot depend entirely on individual talent. Clear standards, thoughtful systems, capable people and good leadership create the conditions for teams to perform well. Training matters, but it works best when the operation supports the behaviour being asked of the team.
+          </p>
+        </div>
+      </article>
+
+      <article class="tenet">
+        <span class="tenet__num">iii.</span>
+        <div class="tenet__body">
+          <h3 class="tenet__heading">The details should have a reason</h3>
+          <p>
+            Food, service, language, environment and behaviour all communicate something about a business. We believe those choices should support the experience rather than exist simply because they look impressive or are expected of a luxury brand.
+          </p>
+        </div>
+      </article>
+
+      <article class="tenet">
+        <span class="tenet__num">iv.</span>
+        <div class="tenet__body">
+          <h3 class="tenet__heading">Experience should support the business</h3>
+          <p>
+            A better guest experience should not exist separately from the operation. It should strengthen how the business works, how confidently the team delivers and why guests choose to return.
+          </p>
+        </div>
+      </article>
+
+      <article class="tenet">
+        <span class="tenet__num">v.</span>
+        <div class="tenet__body">
+          <h3 class="tenet__heading">Selective by design</h3>
+          <p>
+            We work with a limited number of clients and partners at a time. This allows us to understand the business properly, remain close to the work and give each engagement the attention it requires.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <!-- PULL QUOTE -->
+    <section class="pull">
+      <blockquote class="pull__quote">
+        "Beyond time. <em>Beyond taste.</em>"
+      </blockquote>
+      <p class="pull__attribution">— The Infinae Approach</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="cta__inner">
+        <h2 class="cta__title">If this resonates, let's talk.</h2>
+        <p class="cta__body">
+          Every engagement begins with a consultation. We listen first, understand the context and determine whether Infinae is the right fit.
+        </p>
+        <a href="/advisory#intake" class="btn btn--primary">Request a consultation</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  :root {
+    --ink: #1a1715;
+    --paper: #f6f1e8;
+    --paper-deep: #ede5d5;
+    --accent: #c9a961;
+    --rule: rgba(26, 23, 21, 0.12);
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter Tight", system-ui, sans-serif;
+  }
+
+  .page {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin: 0 0 1.75rem;
+  }
+
+  /* HEADER */
+  .header {
+    min-height: 70vh;
+    display: grid;
+    place-items: center;
+    padding: 8rem 2rem 4rem;
+    text-align: center;
+  }
+
+  .header__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+
+  .header__title em { font-style: italic; color: var(--accent); }
+
+  /* OPENING */
+  .opening {
+    padding: 4rem 2rem 6rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .opening__inner {
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+
+  .lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    line-height: 1.4;
+    margin: 0 0 2.5rem;
+    color: var(--ink);
+  }
+
+  .opening p {
+    font-size: 1.05rem;
+    margin: 0 0 1.5rem;
+    opacity: 0.85;
+  }
+
+  /* TENETS */
+  .tenets {
+    background: var(--paper-deep);
+    padding: 6rem 2rem;
+  }
+
+  .tenets__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    text-align: center;
+    margin: 0 0 4rem;
+    opacity: 0.8;
+  }
+
+  .tenet {
+    max-width: 44rem;
+    margin: 0 auto 3.5rem;
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+  }
+
+  .tenet:last-child { margin-bottom: 0; }
+
+  .tenet__num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--accent);
+  }
+
+  .tenet__heading {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .tenet__body p {
+    margin: 0;
+    max-width: 42ch;
+    opacity: 0.85;
+  }
+
+  /* PULL QUOTE */
+  .pull {
+    padding: 8rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+  }
+
+  .pull__quote {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.5rem;
+  }
+
+  .pull__quote em { font-style: italic; color: var(--accent); }
+
+  .pull__attribution {
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin: 0;
+  }
+
+  /* CTA */
+  .cta {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .cta__inner { max-width: 38rem; margin: 0 auto; }
+
+  .cta__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin: 0 0 1rem;
+  }
+
+  .cta__body {
+    font-family: var(--serif);
+    font-style: italic;
+    margin: 0 0 2.5rem;
+    opacity: 0.85;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.35s ease;
+  }
+
+  .btn--primary {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent);
+  }
+
+  @media (max-width: 600px) {
+    .tenet {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .header { padding: 6rem 1.5rem 3rem; min-height: 60vh; }
+  }
+</style>

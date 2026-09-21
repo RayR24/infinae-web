@@ -1,0 +1,192 @@
+---
+import PrimaryNav from "@/components/PrimaryNav.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<PrimaryNav />
+
+<main class="page">
+  <header class="hero">
+    <h1>Terms and Conditions</h1>
+    <p class="intro">Last updated: 2026-02-15</p>
+  </header>
+
+  <section class="section">
+    <div class="section-content">
+      <h2>Use of site</h2>
+      <p>
+        This site provides information about Infinae and allows you to submit enquiries and
+        requests for access.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-content">
+      <h2>Selectivity</h2>
+      <p>
+        Infinae is selective. Submitting a request does not guarantee acceptance, access,
+        or availability.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-content">
+      <h2>Accuracy</h2>
+      <p>
+        You agree to provide accurate information when submitting forms.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-content">
+      <h2>Communications</h2>
+      <p>
+        By submitting an enquiry, you consent to being contacted regarding your submission.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-content">
+      <h2>Intellectual property</h2>
+      <p>
+        All site content, brand elements, and materials remain the property of Infinae unless
+        stated otherwise.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-content">
+      <h2>Contact</h2>
+      <p>
+        For questions, contact: <strong>support@infinae.co.za</strong>
+      </p>
+    </div>
+  </section>
+</main>
+
+<Footer />
+
+<style>
+  .page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+
+  /* Hero - exactly like advisory page */
+  .hero {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+    margin-bottom: 16px;
+    color: var(--green, #1A3C34);
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .intro {
+    font-size: 1rem;
+    color: var(--muted, #444444);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+    opacity: 0.75;
+  }
+
+  /* Sections - exactly like advisory page */
+  .section {
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.3s ease;
+  }
+
+  .section:last-of-type {
+    margin-bottom: 40px;
+  }
+
+  .section-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 2rem;
+    color: var(--green, #1A3C34);
+    font-weight: 350;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Gold dot that appears on hover - exactly like advisory */
+  h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 40px;
+    height: 2px;
+    background: var(--gold, #D4AF37);
+    transition: transform 0.3s ease;
+  }
+
+  .section:hover h2::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  p {
+    color: var(--text, #111111);
+    line-height: 1.8;
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+  }
+
+  .section:hover p {
+    opacity: 1;
+  }
+
+  strong {
+    color: var(--green, #1A3C34);
+    font-weight: 500;
+  }
+
+  /* Responsive - exactly like advisory */
+  @media (max-width: 768px) {
+    .page { padding: 40px 20px; }
+    
+    h1 { font-size: 2.6rem; }
+    
+    .section { margin-bottom: 50px; }
+    
+    h2 { 
+      font-size: 1.8rem; 
+      margin-bottom: 20px;
+    }
+    
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    
+    h2::after {
+      width: 30px;
+      height: 1px;
+    }
+  }
+</style>

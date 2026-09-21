@@ -1,0 +1,426 @@
+---
+// src/pages/index.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PrimaryNav from "../components/PrimaryNav.astro";
+import Footer from "../components/Footer.astro";
+
+const description =
+  "Infinae provides strategic advisory, private dining experiences and bespoke etiquette sessions for luxury hospitality businesses and private clients.";
+---
+
+<BaseLayout title="Beyond time. Beyond taste." description={description}>
+  <PrimaryNav />
+
+  <main class="page">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__inner">
+        <h1 class="hero__title">
+          Beyond time.<br /><em>Beyond taste.</em>
+        </h1>
+        <p class="hero__lede">
+          We help premium hospitality businesses strengthen their operations, improve the guest experience and create service that feels considered and consistent.
+        </p>
+        <p class="hero__body">
+          Our work covers advisory, experience strategy, service standards, hospitality systems, gastronomy and the details that shape how a guest experiences a business.
+        </p>
+        <div class="hero__cta">
+          <a href="mailto:hello@infinae.co.za" class="btn btn--primary">Request a consultation</a>
+          <a href="/philosophy" class="btn btn--ghost">Read the philosophy</a>
+        </div>
+        <p class="hero__credibility accent-text">
+          Based in Johannesburg
+        </p>
+      </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section class="pillars">
+      <article class="pillar">
+        <h2 class="pillar__title">Advisory</h2>
+        <p class="pillar__body">
+          We work with restaurants, hotels, hospitality groups and selected private businesses that want to improve how they operate and how they are experienced.
+        </p>
+        <p class="pillar__body">
+          Our advisory work may include service standards, guest journey, experience strategy, SOP development, operational structure, gastronomy, team performance and the systems needed to support consistent delivery.
+        </p>
+        <p class="pillar__body">
+          We start with the business as it is, identify where the gaps are, and develop practical recommendations around what needs to change.
+        </p>
+        <a href="/advisory" class="pillar__link">Explore Advisory</a>
+      </article>
+
+      <article class="pillar">
+        <h2 class="pillar__title">The Language of Luxury</h2>
+        <p class="pillar__body">
+          The Language of Luxury is Infinae's private dining and bespoke experience platform.
+        </p>
+        <p class="pillar__body">
+          Each experience is built around the guest, the setting and the reason for gathering. This may include private dining, curated lunches, intimate celebrations and other considered hospitality experiences.
+        </p>
+        <p class="pillar__body">
+          Infinae shapes the concept, guest journey and overall experience, then works with the right specialists to bring it together.
+        </p>
+        <p class="pillar__note">The next edition is coming soon.</p>
+        <a href="/language-of-luxury" class="pillar__link">Explore Experiences</a>
+      </article>
+
+      <article class="pillar">
+        <h2 class="pillar__title">Bespoke Etiquette</h2>
+        <p class="pillar__body">
+          Private etiquette training for individuals, couples, families and small groups.
+        </p>
+        <p class="pillar__body">
+          Sessions are tailored to the client and may cover dining etiquette, confidence, presence, hosting, executive dining, international etiquette, social behaviour and the small details that shape how people experience one another.
+        </p>
+        <p class="pillar__body">
+          Training can take the form of private lessons, practical dining sessions or tailored masterclasses.
+        </p>
+        <a href="mailto:hello@infinae.co.za" class="pillar__link">Explore Etiquette</a>
+      </article>
+    </section>
+
+    <!-- OUR APPROACH -->
+    <section class="section">
+      <h2 class="section__title">Our Approach</h2>
+      <div class="section__content">
+        <p>A premium experience depends on more than appearance.</p>
+        <p>
+          The way a guest is welcomed, the confidence of the individual, the quality of the service, the flow of the environment and the systems behind it all influence how the business is remembered.
+        </p>
+        <p>
+          We consider what the business wants the guest to experience, what is actually happening, and where the two do not align.
+        </p>
+      </div>
+    </section>
+
+    <!-- WHO WE WORK WITH -->
+    <section class="section section--alt">
+      <h2 class="section__title">Who We Work With</h2>
+      <div class="section__content">
+        <p>
+          Infinae works with restaurants, boutique hotels, hospitality groups, luxury and lifestyle businesses, private clients and selected partners.
+        </p>
+        <p>
+          Our work is particularly suited to businesses that already value service and experience but want greater consistency, clearer standards or a stronger sense of identity in how the experience is delivered.
+        </p>
+        <p>We work with a limited number of clients and partners at a time.</p>
+        <p>
+          The first conversation helps us understand the business, the problem and whether the work is a good fit.
+        </p>
+        <p>
+          Where there is alignment, we prepare a proposal around the needs of the project rather than placing every client into the same structure.
+        </p>
+      </div>
+    </section>
+
+    <!-- PARTNERS AND CLIENTS -->
+    <section class="section partners">
+      <h2 class="section__title">Our Clients and Partners</h2>
+      <div class="section__content">
+        <p>We work across hospitality, luxury, food, service and experience.</p>
+        <div class="logo-grid">
+          <img src="/images/logos/client-1.png" alt="Client 1" class="logo" />
+          <img src="/images/logos/client-2.png" alt="Client 2" class="logo" />
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta">
+      <h2 class="section__title">Begin With a Conversation</h2>
+      <div class="section__content">
+        <p>Tell us what you are building, improving or trying to solve.</p>
+        <a href="mailto:hello@infinae.co.za" class="btn btn--primary">Request a consultation</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  :root {
+    --ink: #1a1715;
+    --paper: #f6f1e8;
+    --paper-deep: #ede5d5;
+    --accent: #c9a961;
+    --rule: rgba(26, 23, 21, 0.12);
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter Tight", system-ui, sans-serif;
+  }
+
+  .page {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.55;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    place-items: center;
+    padding: 8rem 2rem 6rem;
+  }
+
+  .hero__inner {
+    max-width: 64ch;
+    text-align: center;
+    animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .hero__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.75rem, 7vw, 5.75rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0 0 2rem;
+  }
+
+  .hero__title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero__lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    line-height: 1.5;
+    max-width: 52ch;
+    margin: 0 auto 1.5rem;
+    opacity: 0.9;
+  }
+
+  .hero__body {
+    font-size: 1rem;
+    max-width: 56ch;
+    margin: 0 auto 2.5rem;
+    opacity: 0.75;
+  }
+
+  .hero__cta {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero__credibility {
+    font-size: 0.85rem;
+    margin-top: 2rem;
+  }
+
+  /* BUTTONS */
+  .btn {
+    font-family: var(--sans);
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.35s ease;
+  }
+
+  .btn--primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent);
+    color: var(--ink);
+  }
+
+  .btn--ghost {
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 1rem 0;
+  }
+
+  .btn--ghost:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* PILLARS */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--rule);
+  }
+
+  .pillar {
+    padding: 4rem 3rem;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.4s ease;
+  }
+
+  .pillar:nth-child(3n) {
+    border-right: none;
+  }
+
+  .pillar:hover {
+    background: var(--paper-deep);
+  }
+
+  .pillar__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 2rem;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .pillar__body {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    margin: 0 0 1rem;
+    opacity: 0.85;
+  }
+
+  .pillar__note {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-style: italic;
+    opacity: 0.7;
+    margin: 1.5rem 0;
+  }
+
+  .pillar__link {
+    font-family: var(--sans);
+    display: inline-block;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 3px;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .pillar__link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 5rem 2rem;
+    max-width: 64rem;
+    margin: 0 auto;
+    border-top: 1px solid var(--rule);
+  }
+
+  .section--alt {
+    background: var(--paper-deep);
+    max-width: none;
+  }
+
+  .section--alt .section__title,
+  .section--alt .section__content {
+    max-width: 64rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin: 0 0 2rem;
+    text-align: center;
+  }
+
+  .section__content p {
+    font-family: var(--sans);
+    font-size: 1rem;
+    max-width: 58ch;
+    margin: 0 auto 1.25rem;
+    text-align: center;
+    opacity: 0.85;
+  }
+
+  .accent-text {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--accent);
+    opacity: 1 !important;
+  }
+
+  /* PARTNERS */
+  .partners .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 48rem;
+    margin: 2rem auto;
+  }
+
+  .logo {
+    max-width: 100%;
+    height: auto;
+    opacity: 0.6;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+  }
+
+  .logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
+
+  /* CTA */
+  .cta {
+    padding-bottom: 8rem;
+    text-align: center;
+  }
+
+  .cta .btn {
+    margin-top: 1.5rem;
+  }
+
+  /* ANIMATIONS */
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .pillars {
+      grid-template-columns: 1fr;
+    }
+
+    .pillar {
+      border-right: none;
+      padding: 3.5rem 1.75rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      padding: 6rem 1.5rem 4rem;
+    }
+
+    .partners .logo-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
