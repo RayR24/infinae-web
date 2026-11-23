@@ -135,7 +135,6 @@ const partners = [
 
   /* ---------- HEADER ---------- */
   .header {
-    min-height: 62vh;
     display: grid;
     place-items: center;
     padding: 9rem 2rem 3rem;
@@ -299,34 +298,10 @@ const partners = [
     margin: 0 0 2.5rem;
   }
 
-  /* ---------- BUTTONS ---------- */
-  .btn {
-    display: inline-block;
-    padding: 0.95rem 1.9rem;
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-
-  .btn--light {
-    background: var(--paper);
-    color: var(--ink);
-    border: 1px solid var(--paper);
-  }
-
-  .btn--light:hover {
-    background: var(--accent);
-    color: var(--ink);
-    border-color: var(--accent);
-  }
-
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 600px) {
     .header {
       padding: 7rem 1.5rem 3rem;
-      min-height: 50vh;
     }
 
     .opening,

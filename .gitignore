@@ -5,3 +5,12 @@ dist/
 .vercel/
 .vercel
 .env*
+build.log
+.DS_Store
+**/.DS_Store
+build.log
+.DS_Store
+**/.DS_Store
+.env
+.DS_Store
+**/.DS_Store

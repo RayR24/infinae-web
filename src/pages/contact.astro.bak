@@ -1,0 +1,441 @@
+---
+// src/pages/contact.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PrimaryNav from "../components/PrimaryNav.astro";
+import Footer from "../components/Footer.astro";
+
+const description =
+  "Get in touch with Infinae about dining experiences, private and corporate events, hospitality advisory or etiquette training.";
+
+const contactMethods = [
+  {
+    label: "Email",
+    value: "hello@infinae.co.za",
+    href: "mailto:hello@infinae.co.za",
+    note: "The best way to reach us. We reply within two working days.",
+  },
+  {
+    label: "Instagram",
+    value: "@infinaegroup",
+    href: "https://www.instagram.com/infinaegroup/",
+    note: "For enquiries about The Supper Club and upcoming experiences.",
+    external: true,
+  },
+];
+
+const enquiryTypes = [
+  {
+    title: "Experiences",
+    body: "The Supper Club, Infinae Editions and upcoming dining experiences.",
+    href: "mailto:hello@infinae.co.za?subject=Experience%20enquiry",
+  },
+  {
+    title: "Private & Corporate",
+    body: "Private dinners, celebrations, client hosting, brand events and launches.",
+    href: "mailto:hello@infinae.co.za?subject=Private%20%26%20Corporate%20enquiry",
+  },
+  {
+    title: "Advisory",
+    body: "Hospitality operations, guest experience and service standards.",
+    href: "mailto:hello@infinae.co.za?subject=Advisory%20enquiry",
+  },
+  {
+    title: "Etiquette",
+    body: "Private and corporate etiquette training for individuals and teams.",
+    href: "mailto:hello@infinae.co.za?subject=Etiquette%20enquiry",
+  },
+];
+---
+
+<BaseLayout title="Contact" description={description}>
+  <PrimaryNav />
+
+  <main id="main" class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <p class="eyebrow">Contact</p>
+      <h1 class="header__title">
+        Begin with<br /><em>a conversation.</em>
+      </h1>
+      <p class="header__lede">
+        Tell us about the occasion, the guests and the reason for gathering. We
+        reply within two working days.
+      </p>
+    </header>
+
+    <!-- CONTACT METHODS -->
+    <section class="section section--alt" aria-labelledby="methods-title">
+      <div class="section__inner">
+        <header class="section__head">
+          <p class="eyebrow">Get in Touch</p>
+          <h2 id="methods-title" class="section__title">
+            Two ways to reach us.
+          </h2>
+        </header>
+
+        <div class="methods">
+          {contactMethods.map((m) => (
+            <article class="method">
+              <p class="method__label">{m.label}</p>
+              <a
+                href={m.href}
+                class="method__link"
+                target={m.external ? "_blank" : undefined}
+                rel={m.external ? "noopener noreferrer" : undefined}
+              >
+                {m.value}
+              </a>
+              <p class="method__note">{m.note}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ENQUIRY TYPES -->
+    <section class="section" aria-labelledby="enquiry-title">
+      <div class="section__inner">
+        <header class="section__head">
+          <p class="eyebrow">What is it about?</p>
+          <h2 id="enquiry-title" class="section__title">
+            Start with the right subject.
+          </h2>
+        </header>
+
+        <div class="enquiries">
+          {enquiryTypes.map((e) => (
+            <a href={e.href} class="enquiry">
+              <h3 class="enquiry__title">{e.title}</h3>
+              <p class="enquiry__body">{e.body}</p>
+              <span class="enquiry__cta">Start an email</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="section section--alt" aria-labelledby="location-title">
+      <div class="section__inner">
+        <header class="section__head">
+          <p class="eyebrow">Where We Are</p>
+          <h2 id="location-title" class="section__title">
+            Based in Johannesburg.
+          </h2>
+        </header>
+
+        <div class="prose">
+          <p>
+            Infinae is a culinary experience studio based in Johannesburg, South
+            Africa. We work with clients, venues and partners across the city and
+            beyond.
+          </p>
+          <p>
+            For experiences hosted at partner venues, the location will be
+            confirmed at the time of booking.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="cta__inner">
+        <p class="eyebrow">Direct Enquiry</p>
+        <h2 id="cta-title" class="cta__title">
+          Have something specific in mind?
+        </h2>
+        <p class="cta__body">
+          Email us directly and we'll take it from there.
+        </p>
+        <a href="mailto:hello@infinae.co.za" class="btn btn--light">
+          hello@infinae.co.za
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1.5rem;
+  }
+
+  /* ---------- HEADER ---------- */
+  .header {
+    min-height: 60vh;
+    display: grid;
+    place-items: center;
+    padding: 9rem 2rem 3rem;
+    text-align: center;
+  }
+
+  .header__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+    max-width: 22ch;
+  }
+
+  .header__title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header__lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    line-height: 1.5;
+    max-width: 52ch;
+    margin: 0 auto;
+    opacity: 0.85;
+  }
+
+  /* ---------- GENERIC SECTIONS ---------- */
+  .section {
+    padding: 6rem 2rem;
+  }
+
+  .section--alt {
+    background: var(--paper-deep);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section__inner {
+    max-width: 56rem;
+    margin: 0 auto;
+  }
+
+  .section__head {
+    max-width: 44rem;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+
+  .section__head .eyebrow {
+    margin-bottom: 1rem;
+  }
+
+  .section__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .prose {
+    max-width: 44rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .prose p {
+    font-size: 1.05rem;
+    margin: 0 0 1.25rem;
+    opacity: 0.85;
+  }
+
+  .prose p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ---------- CONTACT METHODS ---------- */
+  .methods {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+  }
+
+  .method {
+    padding: 2.5rem 2.5rem 2rem;
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    text-align: left;
+    background: var(--paper);
+  }
+
+  .method:last-child {
+    border-right: none;
+  }
+
+  .method__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1rem;
+  }
+
+  .method__link {
+    display: inline-block;
+    font-family: var(--serif);
+    font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+    line-height: 1.25;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 3px;
+    margin: 0 0 1.25rem;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .method__link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .method__note {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0;
+    opacity: 0.85;
+  }
+
+  /* ---------- ENQUIRY TYPES ---------- */
+  .enquiries {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+  }
+
+  .enquiry {
+    display: block;
+    padding: 2.5rem 2.5rem 2rem;
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    text-align: left;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--paper);
+    transition: background 0.4s ease;
+  }
+
+  .enquiry:nth-child(2n) {
+    border-right: none;
+  }
+
+  .enquiry:hover {
+    background: var(--paper-deep);
+  }
+
+  .enquiry__title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+    line-height: 1.25;
+    margin: 0 0 1rem;
+  }
+
+  .enquiry__body {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0 0 1.25rem;
+    opacity: 0.85;
+  }
+
+  .enquiry__cta {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 3px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .enquiry:hover .enquiry__cta {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* ---------- CTA (dark) ---------- */
+  .cta {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .cta__inner {
+    max-width: 44rem;
+    margin: 0 auto;
+  }
+
+  .cta .eyebrow {
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .cta__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    line-height: 1.2;
+    margin: 0 0 1.25rem;
+  }
+
+  .cta__body {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.55;
+    opacity: 0.85;
+    margin: 0 0 2.5rem;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 800px) {
+    .methods,
+    .enquiries {
+      grid-template-columns: 1fr;
+    }
+
+    .method,
+    .enquiry {
+      border-right: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .header {
+      padding: 7rem 1.5rem 3rem;
+      min-height: 50vh;
+    }
+
+    .section,
+    .cta {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .method,
+    .enquiry {
+      padding: 2rem 1.5rem 1.5rem;
+    }
+  }
+</style>

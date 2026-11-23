@@ -237,7 +237,9 @@ const contactHref = "mailto:hello@infinae.co.za";
       gap: 0;
       background: var(--paper);
       border-bottom: 1px solid var(--rule);
-      padding: 1.5rem 2rem 2rem;
+      padding: 1rem 1.5rem 1.5rem;
+      max-height: calc(100vh - 72px);
+      overflow-y: auto;
       transform: translateY(-10px);
       opacity: 0;
       pointer-events: none;
@@ -252,9 +254,10 @@ const contactHref = "mailto:hello@infinae.co.za";
 
     .nav__link {
       width: 100%;
-      padding: 1rem 0;
+      padding: 1.15rem 0;
       border-bottom: 1px solid var(--rule);
-      border-left: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.14em;
     }
 
     .nav__link:hover {
@@ -265,7 +268,9 @@ const contactHref = "mailto:hello@infinae.co.za";
     .nav__cta {
       width: 100%;
       text-align: center;
-      margin: 1.25rem 0 0;
+      margin: 1.5rem 0 0;
+      padding: 1rem 1.5rem;
+      font-size: 0.85rem;
     }
   }
 

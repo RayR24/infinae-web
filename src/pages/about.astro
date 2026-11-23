@@ -211,7 +211,6 @@ const description =
 
   /* ---------- HEADER ---------- */
   .header {
-    min-height: 72vh;
     display: grid;
     place-items: center;
     padding: 9rem 2rem 5rem;
@@ -474,26 +473,6 @@ const description =
     margin: 0 0 2.5rem;
   }
 
-  .btn {
-    display: inline-block;
-    padding: 1rem 2rem;
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-
-  .btn--primary {
-    background: var(--paper);
-    color: var(--ink);
-  }
-
-  .btn--primary:hover {
-    background: var(--accent);
-    color: var(--ink);
-  }
-
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 800px) {
     .beyond__grid {
@@ -508,7 +487,6 @@ const description =
   @media (max-width: 600px) {
     .header {
       padding: 7rem 1.5rem 3rem;
-      min-height: 60vh;
     }
 
     .opening,

@@ -1,43 +1,105 @@
 ---
+// src/pages/404.astro
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PrimaryNav from "../components/PrimaryNav.astro";
 import Footer from "../components/Footer.astro";
+
+const description =
+  "The page you are looking for does not exist or has been moved.";
 ---
 
-<BaseLayout title="Page Not Found" description="The page you are looking for does not exist or has been moved.">
-  <main class="not-found">
-    <h1>404</h1>
-    <p>Page not found</p>
-    <p>The page you are looking for does not exist or has been moved.</p>
-    <a class="link" href="/">Back to home</a>
+<BaseLayout title="Page Not Found" description={description}>
+  <PrimaryNav />
+
+  <main id="main" class="page">
+    <section class="hero" aria-labelledby="notfound-title">
+      <div class="hero__inner">
+        <p class="eyebrow">Page Not Found</p>
+        <h1 id="notfound-title" class="hero__title">
+          404
+        </h1>
+        <p class="hero__lede">
+          The page you are looking for does not exist or has been moved.
+        </p>
+        <div class="hero__cta">
+          <a href="/" class="btn btn--primary">Back to Home</a>
+          <a href="/experiences" class="btn btn--outline">Explore Experiences</a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <Footer />
 </BaseLayout>
 
 <style>
-  .not-found {
-    max-width: 92ch;
-    margin: 100px auto;
-    padding: 0 24px;
+  .page {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1.5rem;
+  }
+
+  .hero {
+    display: grid;
+    place-items: center;
+    padding: 9rem 2rem 4rem;
     text-align: center;
   }
 
-  h1 {
-    font-size: 4rem;
-    margin-bottom: 16px;
-    color: var(--green, #1A3C34);
-    font-weight: 500;
+  .hero__inner {
+    max-width: 46rem;
+    animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
 
-  p {
-    color: var(--text, #111111);
-    margin-bottom: 16px;
+  .hero__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(4rem, 12vw, 8rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+    color: var(--accent);
   }
 
-  .link {
-    display: inline-block;
-    margin-top: 24px;
-    color: var(--green, #1A3C34);
-    text-decoration: underline;
-    text-underline-offset: 3px;
+  .hero__lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    line-height: 1.5;
+    max-width: 52ch;
+    margin: 0 auto 2.5rem;
+    opacity: 0.85;
+  }
+
+  .hero__cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      padding: 7rem 1.5rem 3rem;
+    }
   }
 </style>
