@@ -2,12 +2,12 @@
 // src/components/PrimaryNav.astro
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
-// Match exact path OR child routes (e.g. /experiences/[slug])
 const isActive = (path: string) => {
   if (path === "/") return pathname === "/";
   return pathname === path || pathname.startsWith(`${path}/`);
 };
 
+// Mobile: grouped nav. Desktop: flat nav.
 const links = [
   { href: "/about", label: "About", short: "About" },
   { href: "/experiences", label: "Experiences", short: "Experiences" },
@@ -15,6 +15,14 @@ const links = [
   { href: "/advisory", label: "Advisory", short: "Advisory" },
   { href: "/bespoke-etiquette", label: "Bespoke Etiquette", short: "Etiquette" },
 ];
+
+const services = [
+  { href: "/advisory", label: "Advisory" },
+  { href: "/private-corporate", label: "Private & Corporate" },
+  { href: "/bespoke-etiquette", label: "Bespoke Etiquette" },
+];
+
+const isServiceActive = services.some((s) => isActive(s.href));
 
 const contactHref = "/contact";
 ---
@@ -35,17 +43,45 @@ const contactHref = "/contact";
       <span></span><span></span>
     </button>
 
-    <nav class="nav__menu" id="navMenu" aria-label="Primary">
-      {links.map(({ href, label, short }) => (
+    <!-- DESKTOP MENU (flat, unchanged) -->
+    <nav class="nav__menu nav__menu--desktop" aria-label="Primary">
+      {links.map(({ href, label }) => (
         <a
           href={href}
           class={`nav__link ${isActive(href) ? "nav__link--active" : ""}`}
           aria-current={isActive(href) ? "page" : undefined}
         >
-          <span class="nav__link-full">{label}</span>
-          <span class="nav__link-short">{short}</span>
+          {label}
         </a>
       ))}
+      <a href={contactHref} class="nav__cta">Contact</a>
+    </nav>
+
+    <!-- MOBILE MENU (grouped) -->
+    <nav class="nav__menu nav__menu--mobile" id="navMenu" aria-label="Primary mobile">
+      <a href="/about" class="nav__link">About</a>
+      <a href="/experiences" class="nav__link">Experiences</a>
+
+      <details class="nav__group">
+        <summary class={`nav__link nav__summary ${isServiceActive ? "nav__link--active" : ""}`}>
+          Services
+          <svg class="nav__chevron" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+            <path d="M1 3 L5 7 L9 3" fill="none" stroke="currentColor" stroke-width="1.2" />
+          </svg>
+        </summary>
+        <div class="nav__children">
+          {services.map(({ href, label }) => (
+            <a
+              href={href}
+              class={`nav__link nav__link--child ${isActive(href) ? "nav__link--active" : ""}`}
+              aria-current={isActive(href) ? "page" : undefined}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+      </details>
+
       <a href={contactHref} class="nav__cta">Contact</a>
     </nav>
   </div>
@@ -56,7 +92,6 @@ const contactHref = "/contact";
   const menu = document.getElementById("navMenu");
   const navEl = document.getElementById("primaryNav");
 
-  /* Mobile toggle */
   const setOpen = (open: boolean) => {
     if (!menu || !toggle) return;
     menu.classList.toggle("nav__menu--open", open);
@@ -69,22 +104,18 @@ const contactHref = "/contact";
     setOpen(!menu?.classList.contains("nav__menu--open"));
   });
 
-  // Close menu when a link is tapped
   menu?.querySelectorAll("a").forEach((a) =>
     a.addEventListener("click", () => setOpen(false))
   );
 
-  // Close on Escape
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") setOpen(false);
   });
 
-  // Close if viewport resizes past breakpoint
   window.addEventListener("resize", () => {
     if (window.innerWidth > 860) setOpen(false);
   });
 
-  /* Scroll state */
   const onScroll = () => {
     if (window.scrollY > 40) navEl?.classList.add("nav--scrolled");
     else navEl?.classList.remove("nav--scrolled");
@@ -142,6 +173,7 @@ const contactHref = "/contact";
     display: block;
   }
 
+  /* Base menu (desktop) */
   .nav__menu {
     display: flex;
     align-items: center;
@@ -170,10 +202,6 @@ const contactHref = "/contact";
     color: var(--accent);
   }
 
-  .nav__link-short {
-    display: none;
-  }
-
   .nav__cta {
     font-family: var(--sans);
     font-size: 0.74rem;
@@ -190,6 +218,11 @@ const contactHref = "/contact";
   .nav__cta:hover {
     background: var(--accent);
     color: var(--ink);
+  }
+
+  /* Mobile menu hidden by default */
+  .nav__menu--mobile {
+    display: none;
   }
 
   /* Mobile toggle */
@@ -215,7 +248,6 @@ const contactHref = "/contact";
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
-  /* Turn the toggle into an X when open */
   .nav__toggle[aria-expanded="true"] span:nth-child(1) {
     transform: translateY(3.5px) rotate(45deg);
   }
@@ -223,6 +255,7 @@ const contactHref = "/contact";
     transform: translateY(-3.5px) rotate(-45deg);
   }
 
+  /* ---------- MOBILE ---------- */
   @media (max-width: 860px) {
     .nav__toggle {
       display: flex;
@@ -232,17 +265,22 @@ const contactHref = "/contact";
       height: 28px;
     }
 
-    .nav__menu {
+    .nav__menu--desktop {
+      display: none;
+    }
+
+    .nav__menu--mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
       position: absolute;
       top: 100%;
       left: 0;
       right: 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
       background: var(--paper);
       border-bottom: 1px solid var(--rule);
-      padding: 0.5rem 1.5rem 1.25rem;
+      padding: 0.5rem 1.5rem 1.5rem;
       max-height: calc(100vh - 72px);
       overflow-y: auto;
       transform: translateY(-10px);
@@ -251,7 +289,7 @@ const contactHref = "/contact";
       transition: transform 0.35s ease, opacity 0.35s ease;
     }
 
-    .nav__menu--open {
+    .nav__menu--mobile.nav__menu--open {
       transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
@@ -259,47 +297,79 @@ const contactHref = "/contact";
 
     .nav__link {
       width: 100%;
-      padding: 1rem 0.5rem;
+      padding: 1.1rem 0;
       border-bottom: 1px solid var(--rule);
-      font-size: 0.82rem;
-      letter-spacing: 0.1em;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
       text-align: left;
     }
 
-    .nav__link:nth-child(odd) {
-      padding-right: 0.75rem;
-      border-right: 1px solid var(--rule);
+    /* Accordion group */
+    .nav__group {
+      border-bottom: 1px solid var(--rule);
     }
 
-    .nav__link:nth-child(even) {
-      padding-left: 0.75rem;
-    }
-
-    .nav__link:hover {
-      border-bottom-color: var(--rule);
+    .nav__group[open] .nav__summary {
       color: var(--accent);
     }
 
-    /* Show short labels on mobile */
-    .nav__link-full {
+    .nav__summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 1.1rem 0;
+      list-style: none;
+      cursor: pointer;
+      border-bottom: none;
+    }
+
+    .nav__summary::-webkit-details-marker {
       display: none;
     }
 
-    .nav__link-short {
-      display: inline;
+    .nav__chevron {
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .nav__group[open] .nav__chevron {
+      transform: rotate(180deg);
+    }
+
+    .nav__children {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 0 0 0.5rem 0;
+    }
+
+    .nav__link--child {
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      padding: 0.9rem 0 0.9rem 1rem;
+      border-bottom: 1px solid var(--rule);
+      opacity: 0.85;
+    }
+
+    .nav__link--child:last-child {
+      border-bottom: none;
+    }
+
+    .nav__link--child:hover {
+      opacity: 1;
+      color: var(--accent);
     }
 
     .nav__cta {
-      grid-column: 1 / -1;
       width: 100%;
       text-align: center;
-      margin: 1rem 0 0;
+      margin: 1.25rem 0 0;
       padding: 1rem 1.5rem;
       font-size: 0.85rem;
     }
   }
 
-  /* Lock body scroll when mobile menu is open */
   :global(body.nav-locked) {
     overflow: hidden;
   }
