@@ -1,6 +1,35 @@
 ---
 // src/components/Footer.astro
 const year = new Date().getFullYear();
+
+const exploreLinks = [
+  { href: "/about", label: "About" },
+  { href: "/experiences", label: "Experiences" },
+  { href: "/private-corporate", label: "Private & Corporate" },
+  { href: "/advisory", label: "Advisory" },
+  { href: "/bespoke-etiquette", label: "Bespoke Etiquette" },
+];
+
+const socialLinks = [
+  {
+    href: "https://www.instagram.com/infinaegroup",
+    label: "Instagram",
+  },
+  {
+    href: "https://www.linkedin.com/in/infinae-group-b79657393",
+    label: "LinkedIn",
+  },
+  {
+    href: "https://www.pinterest.com/infinaegroup",
+    label: "Pinterest",
+  },
+];
+
+const legalLinks = [
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms and Conditions" },
+  { href: "/refund-policy", label: "Refund Policy" },
+];
 ---
 
 <footer class="footer">
@@ -14,46 +43,39 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="footer__col">
-      <h4 class="footer__heading">Infinae</h4>
-      <a href="/philosophy">Philosophy</a>
-      <a href="/advisory">Advisory</a>
-      <a href="/language-of-luxury">Language of Luxury</a>
-      <a href="/bespoke-etiquette">Bespoke Etiquette</a>
+      <h4 class="footer__heading">Explore</h4>
+      {exploreLinks.map(({ href, label }) => (
+        <a href={href}>{label}</a>
+      ))}
     </div>
 
-    <div class="footer__col"> 
+    <div class="footer__col">
       <h4 class="footer__heading">Connect</h4>
-      <a href="https://www.instagram.com/infinaegroup" rel="noopener">Instagram</a>
-      <a href="https://www.linkedin.com/in/infinae-group-b79657393" rel="noopener">LinkedIn</a>
-      <a href="https://www.pinterest.com/infinaegroup" rel="noopener">Pinterest</a>
+      {socialLinks.map(({ href, label }) => (
+        <a href={href} target="_blank" rel="noopener noreferrer">{label}</a>
+      ))}
       <a href="mailto:hello@infinae.co.za">hello@infinae.co.za</a>
     </div>
 
     <div class="footer__col">
       <h4 class="footer__heading">Legal</h4>
-      <a href="/privacy">Privacy Policy</a>
-      <a href="/terms">Terms and Conditions</a>
-      <a href="/refund-policy">Refund Policy</a>
+      {legalLinks.map(({ href, label }) => (
+        <a href={href}>{label}</a>
+      ))}
     </div>
   </div>
 
   <div class="footer__bottom">
-    <p>© {year} Infinae. All rights reserved.</p>
+    <p>&copy; {2026} Infinae. All rights reserved.</p>
     <p class="footer__crafted">Crafted with intention</p>
   </div>
 </footer>
 
 <style>
-  :root {
-    --ink: #1a1715;
-    --paper: #f6f1e8;
-    --accent: #c9a961;
-    --rule: rgba(246, 241, 232, 0.18);
-    --serif: "Cormorant Garamond", Georgia, serif;
-    --sans: "Inter Tight", system-ui, sans-serif;
-  }
-
   .footer {
+    /* Footer-specific rule: lighter over dark background */
+    --rule: rgba(246, 241, 232, 0.18);
+
     background: var(--ink);
     color: var(--paper);
     font-family: var(--sans);
@@ -140,17 +162,31 @@ const year = new Date().getFullYear();
     opacity: 0.55;
   }
 
-  .footer__bottom p { margin: 0; }
-  .footer__crafted { font-style: italic; font-family: var(--serif); font-size: 0.9rem; }
+  .footer__bottom p {
+    margin: 0;
+  }
+
+  .footer__crafted {
+    font-style: italic;
+    font-family: var(--serif);
+    font-size: 0.9rem;
+  }
 
   @media (max-width: 860px) {
-    .footer { padding: 4rem 1.5rem 2rem; }
+    .footer {
+      padding: 4rem 1.5rem 2rem;
+    }
+
     .footer__inner {
       grid-template-columns: 1fr 1fr;
       gap: 2.5rem;
       padding-bottom: 3rem;
     }
-    .footer__brand { grid-column: 1 / -1; }
+
+    .footer__brand {
+      grid-column: 1 / -1;
+    }
+
     .footer__bottom {
       flex-direction: column;
       gap: 0.75rem;
@@ -159,6 +195,8 @@ const year = new Date().getFullYear();
   }
 
   @media (max-width: 500px) {
-    .footer__inner { grid-template-columns: 1fr; }
+    .footer__inner {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

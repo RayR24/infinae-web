@@ -1,9 +1,22 @@
-
 ---
 // src/components/PrimaryNav.astro
-const pathname = Astro.url.pathname;
-const isActive = (path: string) =>
-  pathname === path || pathname === `${path}/` ? "nav__link--active" : "";
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+// Match exact path OR child routes (e.g. /experiences/[slug])
+const isActive = (path: string) => {
+  if (path === "/") return pathname === "/";
+  return pathname === path || pathname.startsWith(`${path}/`);
+};
+
+const links = [
+  { href: "/about", label: "About" },
+  { href: "/experiences", label: "Experiences" },
+  { href: "/private-corporate", label: "Private & Corporate" },
+  { href: "/advisory", label: "Advisory" },
+  { href: "/bespoke-etiquette", label: "Bespoke Etiquette" },
+];
+
+const contactHref = "mailto:hello@infinae.co.za";
 ---
 
 <header class="nav" id="primaryNav">
@@ -12,31 +25,65 @@ const isActive = (path: string) =>
       <img src="/images/logo.png" alt="Infinae" class="nav__logo" />
     </a>
 
-    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" id="navToggle">
+    <button
+      class="nav__toggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="navMenu"
+      id="navToggle"
+    >
       <span></span><span></span>
     </button>
 
     <nav class="nav__menu" id="navMenu" aria-label="Primary">
-      <a href="/philosophy" class={`nav__link ${isActive("/philosophy")}`}>Philosophy</a>
-      <a href="/language-of-luxury" class={`nav__link ${isActive("/language-of-luxury")}`}>Language of Luxury</a>
-      <a href="/advisory" class={`nav__link ${isActive("/advisory")}`}>Advisory</a>
-      <a href="/bespoke-etiquette" class={`nav__link ${isActive("/bespoke-etiquette")}`}>Bespoke Etiquette</a>
-      <a href="/advisory#intake" class="nav__cta">Consultation</a>
+      {links.map(({ href, label }) => (
+        <a
+          href={href}
+          class={`nav__link ${isActive(href) ? "nav__link--active" : ""}`}
+          aria-current={isActive(href) ? "page" : undefined}
+        >
+          {label}
+        </a>
+      ))}
+      <a href={contactHref} class="nav__cta">Contact</a>
     </nav>
   </div>
 </header>
 
 <script>
-  // Mobile toggle
-  const toggle = document.getElementById("navToggle");
+  const toggle = document.getElementById("navToggle") as HTMLButtonElement | null;
   const menu = document.getElementById("navMenu");
+  const navEl = document.getElementById("primaryNav");
+
+  /* Mobile toggle */
+  const setOpen = (open: boolean) => {
+    if (!menu || !toggle) return;
+    menu.classList.toggle("nav__menu--open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.classList.toggle("nav-locked", open);
+  };
+
   toggle?.addEventListener("click", () => {
-    const open = menu?.classList.toggle("nav__menu--open");
-    toggle.setAttribute("aria-expanded", String(!!open));
+    setOpen(!menu?.classList.contains("nav__menu--open"));
   });
 
-  // Scroll state: condense nav after scroll
-  const navEl = document.getElementById("primaryNav");
+  // Close menu when a link is tapped
+  menu?.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => setOpen(false))
+  );
+
+  // Close on Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setOpen(false);
+  });
+
+  // Close if viewport resizes past breakpoint
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 860) setOpen(false);
+  });
+
+  /* Scroll state */
   const onScroll = () => {
     if (window.scrollY > 40) navEl?.classList.add("nav--scrolled");
     else navEl?.classList.remove("nav--scrolled");
@@ -46,15 +93,6 @@ const isActive = (path: string) =>
 </script>
 
 <style>
-  :root {
-    --ink: #1a1715;
-    --paper: #f6f1e8;
-    --accent: #c9a961;
-    --rule: rgba(26, 23, 21, 0.12);
-    --serif: "Cormorant Garamond", Georgia, serif;
-    --sans: "Inter Tight", system-ui, sans-serif;
-  }
-
   .nav {
     position: fixed;
     top: 0;
@@ -63,7 +101,11 @@ const isActive = (path: string) =>
     z-index: 100;
     background: rgba(246, 241, 232, 0);
     backdrop-filter: blur(0);
-    transition: background 0.4s ease, backdrop-filter 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
+    transition:
+      background 0.4s ease,
+      backdrop-filter 0.4s ease,
+      padding 0.4s ease,
+      border-color 0.4s ease;
     border-bottom: 1px solid transparent;
   }
 
@@ -102,12 +144,12 @@ const isActive = (path: string) =>
   .nav__menu {
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+    gap: 2.25rem;
   }
 
   .nav__link {
     font-family: var(--sans);
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     font-weight: 400;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -118,22 +160,32 @@ const isActive = (path: string) =>
     transition: border-color 0.3s ease, color 0.3s ease;
   }
 
-  .nav__link:hover { border-bottom-color: var(--ink); }
-  .nav__link--active { border-bottom-color: var(--accent); color: var(--accent); }
+  .nav__link:hover {
+    border-bottom-color: var(--ink);
+  }
+
+  .nav__link--active {
+    border-bottom-color: var(--accent);
+    color: var(--accent);
+  }
 
   .nav__cta {
     font-family: var(--sans);
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 0.75rem 1.5rem;
+    padding: 0.7rem 1.35rem;
     background: var(--ink);
     color: var(--paper);
+    margin-left: 0.5rem;
     transition: background 0.3s ease, color 0.3s ease;
   }
 
-  .nav__cta:hover { background: var(--accent); color: var(--ink); }
+  .nav__cta:hover {
+    background: var(--accent);
+    color: var(--ink);
+  }
 
   /* Mobile toggle */
   .nav__toggle {
@@ -147,6 +199,7 @@ const isActive = (path: string) =>
     justify-content: center;
     gap: 6px;
     padding: 0;
+    z-index: 2;
   }
 
   .nav__toggle span {
@@ -154,11 +207,21 @@ const isActive = (path: string) =>
     width: 24px;
     height: 1px;
     background: var(--ink);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* Turn the toggle into an X when open */
+  .nav__toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+  .nav__toggle[aria-expanded="true"] span:nth-child(2) {
+    transform: translateY(-3.5px) rotate(-45deg);
   }
 
   @media (max-width: 860px) {
-    .nav__toggle { display: flex; }
+    .nav__toggle {
+      display: flex;
+    }
 
     .nav__logo {
       height: 28px;
@@ -170,6 +233,7 @@ const isActive = (path: string) =>
       left: 0;
       right: 0;
       flex-direction: column;
+      align-items: stretch;
       gap: 0;
       background: var(--paper);
       border-bottom: 1px solid var(--rule);
@@ -190,12 +254,23 @@ const isActive = (path: string) =>
       width: 100%;
       padding: 1rem 0;
       border-bottom: 1px solid var(--rule);
+      border-left: none;
+    }
+
+    .nav__link:hover {
+      border-bottom-color: var(--rule);
+      color: var(--accent);
     }
 
     .nav__cta {
       width: 100%;
       text-align: center;
-      margin-top: 1rem;
+      margin: 1.25rem 0 0;
     }
+  }
+
+  /* Optional: lock body scroll when mobile menu is open */
+  :global(body.nav-locked) {
+    overflow: hidden;
   }
 </style>

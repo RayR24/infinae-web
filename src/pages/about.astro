@@ -1,0 +1,532 @@
+---
+// src/pages/about.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PrimaryNav from "../components/PrimaryNav.astro";
+import Footer from "../components/Footer.astro";
+
+const description =
+  "Infinae is a culinary experience studio based in Johannesburg, creating dining experiences, private and corporate events, hospitality advisory and etiquette training.";
+---
+
+<BaseLayout title="About" description={description}>
+  <PrimaryNav />
+
+  <main id="main" class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <p class="eyebrow">About Infinae</p>
+      <h1 class="header__title">
+        Balance is the<br /><em>highest luxury.</em>
+      </h1>
+    </header>
+
+    <!-- OPENING -->
+    <section class="opening" aria-label="Introduction">
+      <div class="opening__inner">
+        <p class="lede">
+          Infinae is a culinary experience studio based in Johannesburg, South Africa.
+        </p>
+        <p>
+          We create experiences around food, hospitality and bringing people
+          together. Our work includes Infinae's own dining experiences, private and
+          corporate events, hospitality advisory and etiquette training.
+        </p>
+        <p>
+          Infinae was built from the belief that good hospitality is rarely defined
+          by one impressive moment. It comes from how the food, service, setting,
+          pace and people work together, and how the guest feels throughout the
+          experience and when they leave.
+        </p>
+        <p>
+          When these elements are considered together, the experience feels natural
+          rather than forced.
+        </p>
+      </div>
+    </section>
+
+    <!-- WHAT WE BELIEVE -->
+    <section class="tenets" aria-labelledby="beliefs-title">
+      <header class="tenets__head">
+        <p class="eyebrow">What We Believe</p>
+        <h2 id="beliefs-title" class="tenets__title">Five ideas that shape our work.</h2>
+      </header>
+
+      <article class="tenet">
+        <span class="tenet__num">i.</span>
+        <div class="tenet__body">
+          <h3 class="tenet__heading">Food brings people together</h3>
+          <p>
+            Food is at the centre of Infinae because it creates a natural reason for
+            people to gather.
+          </p>
+          <p>
+            A dinner can introduce people to a new restaurant, celebrate an occasion,
+            bring a company closer to its clients or create an experience around a
+            brand. The reason for gathering may change, but sharing food remains one
+            of the simplest ways to bring people together.
+          </p>
+        </div>
+      </article>
+
+      <article class="tenet">
+        <span class="tenet__num">ii.</span>
+        <div class="tenet__body">
+          <h3 class="tenet__heading">The experience is more than the menu</h3>
+          <p>
+            Good food matters, but it is only one part of what a guest remembers.
+          </p>
+          <p>
+            The setting, service, timing, atmosphere and people around the table all
+            influence the experience. We consider these elements together rather than
+            treating food as something separate from hospitality.
+          </p>
+        </div>
+      </article>
+
+      <article class="tenet">
+        <span class="tenet__num">iii.</span>
+        <div class="tenet__body">
+          <h3 class="tenet__heading">The details should have a reason</h3>
+          <p>Not everything needs to be elaborate.</p>
+          <p>
+            We are more interested in choices that make sense for the experience than
+            adding elements simply because they look impressive. Sometimes a simpler
+            approach creates a stronger experience because every detail has a clear
+            purpose.
+          </p>
+        </div>
+      </article>
+
+      <article class="tenet">
+        <span class="tenet__num">iv.</span>
+        <div class="tenet__body">
+          <h3 class="tenet__heading">Good hospitality should feel natural</h3>
+          <p>
+            Guests should not have to notice how much work has gone into creating an
+            experience.
+          </p>
+          <p>
+            Good hospitality allows people to feel comfortable, looked after and able
+            to enjoy the moment. The planning and structure should support the
+            experience quietly rather than becoming the focus of it.
+          </p>
+        </div>
+      </article>
+
+      <article class="tenet">
+        <span class="tenet__num">v.</span>
+        <div class="tenet__body">
+          <h3 class="tenet__heading">There should always be room to discover something</h3>
+          <p>
+            Infinae is interested in new chefs, restaurants, ingredients, places,
+            cultures and different ways of bringing people together.
+          </p>
+          <p>
+            Some experiences may feel familiar, while others may introduce guests to
+            something they would not normally choose for themselves. That sense of
+            discovery is an important part of what we are building.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <!-- BEYOND THE TABLE -->
+    <section class="beyond" aria-labelledby="beyond-title">
+      <header class="beyond__head">
+        <p class="eyebrow">Beyond the Table</p>
+        <h2 id="beyond-title" class="beyond__title">
+          Our work extends into advisory and etiquette.
+        </h2>
+        <p class="beyond__lede">
+          These services come from the same interest that shapes our culinary work:
+          understanding how people experience hospitality and how thoughtful details
+          can improve that experience.
+        </p>
+      </header>
+
+      <div class="beyond__grid">
+        <article class="beyond__card">
+          <p class="eyebrow">Advisory</p>
+          <h3 class="beyond__card-title">Strengthening hospitality operations.</h3>
+          <p class="beyond__card-body">
+            We work with hospitality businesses that want to strengthen guest
+            experience, service standards and front of house performance.
+          </p>
+          <a href="/advisory" class="beyond__link">Explore Advisory</a>
+        </article>
+
+        <article class="beyond__card">
+          <p class="eyebrow">Etiquette</p>
+          <h3 class="beyond__card-title">Confidence in dining and hosting.</h3>
+          <p class="beyond__card-body">
+            We offer private and corporate etiquette training for people who want
+            greater confidence in dining, hosting and professional settings.
+          </p>
+          <a href="/bespoke-etiquette" class="beyond__link">Explore Etiquette</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- SIGN-OFF -->
+    <section class="signoff" aria-labelledby="signoff-title">
+      <div class="signoff__inner">
+        <h2 id="signoff-title" class="signoff__name">Infinae</h2>
+        <p class="signoff__body">
+          Infinae was created in Johannesburg around a shared interest in food,
+          hospitality and the experiences that bring people together.
+        </p>
+        <p class="signoff__tagline">Beyond time. <em>Beyond taste.</em></p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="cta__inner">
+        <h2 id="cta-title" class="cta__title">Begin with a conversation.</h2>
+        <p class="cta__body">
+          Have an experience, partnership or hospitality project in mind?
+        </p>
+        <a href="mailto:hello@infinae.co.za" class="btn btn--primary">Contact Infinae</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1.5rem;
+  }
+
+  /* ---------- HEADER ---------- */
+  .header {
+    min-height: 72vh;
+    display: grid;
+    place-items: center;
+    padding: 9rem 2rem 5rem;
+    text-align: center;
+  }
+
+  .header__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+
+  .header__title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* ---------- OPENING ---------- */
+  .opening {
+    padding: 4rem 2rem 7rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .opening__inner {
+    max-width: 44rem;
+    margin: 0 auto;
+  }
+
+  .lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    line-height: 1.4;
+    margin: 0 0 2.5rem;
+  }
+
+  .opening p:not(.lede) {
+    font-size: 1.05rem;
+    margin: 0 0 1.5rem;
+    opacity: 0.85;
+  }
+
+  /* ---------- TENETS ---------- */
+  .tenets {
+    background: var(--paper-deep);
+    padding: 7rem 2rem;
+  }
+
+  .tenets__head {
+    max-width: 44rem;
+    margin: 0 auto 4.5rem;
+    text-align: center;
+  }
+
+  .tenets__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1.25;
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  .tenet {
+    max-width: 44rem;
+    margin: 0 auto 3.5rem;
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+  }
+
+  .tenet:last-child {
+    margin-bottom: 0;
+  }
+
+  .tenet__num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--accent);
+  }
+
+  .tenet__heading {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.35rem, 2.2vw, 1.6rem);
+    line-height: 1.25;
+    margin: 0 0 0.9rem;
+    letter-spacing: -0.01em;
+  }
+
+  .tenet__body p {
+    font-size: 1rem;
+    margin: 0 0 1rem;
+    max-width: 46ch;
+    opacity: 0.85;
+  }
+
+  .tenet__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ---------- BEYOND THE TABLE ---------- */
+  .beyond {
+    padding: 7rem 2rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .beyond__head {
+    max-width: 44rem;
+    margin: 0 auto 3.5rem;
+    text-align: center;
+  }
+
+  .beyond__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    margin: 0 0 1.25rem;
+  }
+
+  .beyond__lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.55;
+    opacity: 0.85;
+    margin: 0;
+  }
+
+  .beyond__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    max-width: 60rem;
+    margin: 0 auto;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+  }
+
+  .beyond__card {
+    padding: 3rem 2.5rem;
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    transition: background 0.4s ease;
+  }
+
+  .beyond__card:last-child {
+    border-right: none;
+  }
+
+  .beyond__card:hover {
+    background: var(--paper-deep);
+  }
+
+  .beyond__card-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.3;
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .beyond__card-body {
+    font-size: 0.95rem;
+    margin: 0 0 1.75rem;
+    opacity: 0.85;
+  }
+
+  .beyond__link {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 3px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .beyond__link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* ---------- SIGN-OFF ---------- */
+  .signoff {
+    padding: 8rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+  }
+
+  .signoff__inner {
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+
+  .signoff__name {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    letter-spacing: 0.02em;
+    margin: 0 0 1.5rem;
+  }
+
+  .signoff__body {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.55;
+    opacity: 0.85;
+    margin: 0 0 2.5rem;
+  }
+
+  .signoff__tagline {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .signoff__tagline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* ---------- CTA ---------- */
+  .cta {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .cta__inner {
+    max-width: 38rem;
+    margin: 0 auto;
+  }
+
+  .cta__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    margin: 0 0 1rem;
+  }
+
+  .cta__body {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    opacity: 0.8;
+    margin: 0 0 2.5rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .btn--primary {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent);
+    color: var(--ink);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 800px) {
+    .beyond__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .beyond__card {
+      border-right: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .header {
+      padding: 7rem 1.5rem 3rem;
+      min-height: 60vh;
+    }
+
+    .opening,
+    .tenets,
+    .beyond,
+    .signoff {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .tenet {
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+    }
+
+    .tenet__num {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+  }
+</style>

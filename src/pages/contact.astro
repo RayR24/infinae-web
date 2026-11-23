@@ -1,211 +1,464 @@
 ---
+// src/pages/contact.astro
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PrimaryNav from "../components/PrimaryNav.astro";
 import Footer from "../components/Footer.astro";
+
+const description =
+  "Get in touch with Infinae about dining experiences, private and corporate events, hospitality advisory or etiquette training.";
+
+const contactMethods = [
+  {
+    label: "Email",
+    value: "hello@infinae.co.za",
+    href: "mailto:hello@infinae.co.za",
+    note: "The best way to reach us. We reply within two working days.",
+  },
+  {
+    label: "Instagram",
+    value: "@infinaegroup",
+    href: "https://www.instagram.com/infinaegroup/",
+    note: "For enquiries about The Supper Club and upcoming experiences.",
+    external: true,
+  },
+];
+
+const enquiryTypes = [
+  {
+    title: "Experiences",
+    body: "The Supper Club, Infinae Editions and upcoming dining experiences.",
+    href: "mailto:hello@infinae.co.za?subject=Experience%20enquiry",
+  },
+  {
+    title: "Private & Corporate",
+    body: "Private dinners, celebrations, client hosting, brand events and launches.",
+    href: "mailto:hello@infinae.co.za?subject=Private%20%26%20Corporate%20enquiry",
+  },
+  {
+    title: "Advisory",
+    body: "Hospitality operations, guest experience and service standards.",
+    href: "mailto:hello@infinae.co.za?subject=Advisory%20enquiry",
+  },
+  {
+    title: "Etiquette",
+    body: "Private and corporate etiquette training for individuals and teams.",
+    href: "mailto:hello@infinae.co.za?subject=Etiquette%20enquiry",
+  },
+];
 ---
 
-<BaseLayout title="Contact" description="Get in touch with Infinae.">
+<BaseLayout title="Contact" description={description}>
   <PrimaryNav />
-  <main class="page">
-    <header class="hero">
-      <h1>Contact</h1>
-      <p class="intro">
-        Get in touch with us.
+
+  <main id="main" class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <p class="eyebrow">Contact</p>
+      <h1 class="header__title">
+        Begin with<br /><em>a conversation.</em>
+      </h1>
+      <p class="header__lede">
+        Tell us about the occasion, the guests and the reason for gathering. We
+        reply within two working days.
       </p>
     </header>
 
-    <section class="section">
-      <div class="section-content">
-        <form id="contact-form" method="POST" action="/api/intake">
-          <!-- Honeypot field (hidden from real users) -->
-          <input type="text" name="company_website" style="display:none" tabindex="-1" autocomplete="off" />
-          
-          <input type="hidden" name="source" value="contact_page" />
-          <input type="hidden" name="ml_group" value="General Enquiries" />
-          
-          <div class="form-group">
-            <label for="name">Full name *</label>
-            <input type="text" id="name" name="name" required />
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email address *</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          
-          <div class="form-group">
-            <label for="phone">Phone number *</label>
-            <input type="tel" id="phone" name="phone" required />
-          </div>
-          
-          <div class="form-group">
-            <label for="city">City</label>
-            <input type="text" id="city" name="city" />
-          </div>
-          
-          <div class="form-group">
-            <label for="interest">Area of interest *</label>
-            <select id="interest" name="interest" required>
-              <option value="">Select one</option>
-              <option value="Advisory">Advisory</option>
-              <option value="Language of Luxury">Language of Luxury</option>
-              <option value="Institutions">Institutions</option>
-              <option value="General">General enquiry</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="budget_range">Budget range</label>
-            <select id="budget_range" name="budget_range">
-              <option value="">Select</option>
-              <option value="Under R5,000">Under R5,000</option>
-              <option value="R5,000 - R15,000">R5,000 - R15,000</option>
-              <option value="R15,000 - R30,000">R15,000 - R30,000</option>
-              <option value="R30,000+">R30,000+</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4"></textarea>
-          </div>
-          
-          <div class="form-group checkbox">
-            <label>
-              <input type="checkbox" name="consent" value="yes" required />
-              I agree to the processing of my information as described in the Privacy Policy. *
-            </label>
-          </div>
-          
-          <button type="submit" class="cta">Submit enquiry</button>
-          
-          <div id="form-status" style="margin-top: 20px;"></div>
-        </form>
+    <!-- CONTACT METHODS -->
+    <section class="section section--alt" aria-labelledby="methods-title">
+      <div class="section__inner">
+        <header class="section__head">
+          <p class="eyebrow">Get in Touch</p>
+          <h2 id="methods-title" class="section__title">
+            Two ways to reach us.
+          </h2>
+        </header>
+
+        <div class="methods">
+          {contactMethods.map((m) => (
+            <article class="method">
+              <p class="method__label">{m.label}</p>
+              <a
+                href={m.href}
+                class="method__link"
+                target={m.external ? "_blank" : undefined}
+                rel={m.external ? "noopener noreferrer" : undefined}
+              >
+                {m.value}
+              </a>
+              <p class="method__note">{m.note}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ENQUIRY TYPES -->
+    <section class="section" aria-labelledby="enquiry-title">
+      <div class="section__inner">
+        <header class="section__head">
+          <p class="eyebrow">What is it about?</p>
+          <h2 id="enquiry-title" class="section__title">
+            Start with the right subject.
+          </h2>
+        </header>
+
+        <div class="enquiries">
+          {enquiryTypes.map((e) => (
+            <a href={e.href} class="enquiry">
+              <h3 class="enquiry__title">{e.title}</h3>
+              <p class="enquiry__body">{e.body}</p>
+              <span class="enquiry__cta">Start an email</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="section section--alt" aria-labelledby="location-title">
+      <div class="section__inner">
+        <header class="section__head">
+          <p class="eyebrow">Where We Are</p>
+          <h2 id="location-title" class="section__title">
+            Based in Johannesburg.
+          </h2>
+        </header>
+
+        <div class="prose">
+          <p>
+            Infinae is a culinary experience studio based in Johannesburg, South
+            Africa. We work with clients, venues and partners across the city and
+            beyond.
+          </p>
+          <p>
+            For experiences hosted at partner venues, the location will be
+            confirmed at the time of booking.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="cta__inner">
+        <p class="eyebrow">Direct Enquiry</p>
+        <h2 id="cta-title" class="cta__title">
+          Have something specific in mind?
+        </h2>
+        <p class="cta__body">
+          Email us directly and we'll take it from there.
+        </p>
+        <a href="mailto:hello@infinae.co.za" class="btn btn--light">
+          hello@infinae.co.za
+        </a>
       </div>
     </section>
   </main>
-</BaseLayout>
 
-<script>
-  const form = document.getElementById('contact-form');
-  const statusDiv = document.getElementById('form-status');
-  
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      statusDiv.innerHTML = '<p style="color: #1A3C34;">Submitting...</p>';
-      
-      const formData = new FormData(form);
-      
-      try {
-        const response = await fetch('/api/intake', {
-          method: 'POST',
-          body: formData
-        });
-        
-        const result = await response.json();
-        
-        if (response.ok && result.success) {
-          statusDiv.innerHTML = '<p style="color: #1A3C34;">Thank you. We will be in touch soon.</p>';
-          form.reset();
-        } else {
-          statusDiv.innerHTML = `<p style="color: #cc0000;">Error: ${result.error || 'Something went wrong. Please try again.'}</p>`;
-        }
-      } catch (error) {
-        statusDiv.innerHTML = '<p style="color: #cc0000;">Network error. Please try again.</p>';
-      }
-    });
-  }
-</script>
+  <Footer />
+</BaseLayout>
 
 <style>
   .page {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 60px 24px;
+    background: var(--paper);
+    color: var(--ink);
   }
-  
-  .hero {
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1.5rem;
+  }
+
+  /* ---------- HEADER ---------- */
+  .header {
+    min-height: 60vh;
+    display: grid;
+    place-items: center;
+    padding: 9rem 2rem 3rem;
     text-align: center;
-    margin-bottom: 70px;
   }
-  
-  h1 {
-    font-size: 3.2rem;
-    margin-bottom: 16px;
-    color: var(--green, #1A3C34);
-    font-weight: 350;
+
+  .header__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+    max-width: 22ch;
   }
-  
-  .intro {
-    font-size: 1.3rem;
-    color: var(--text, #111111);
-    max-width: 600px;
+
+  .header__title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header__lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    line-height: 1.5;
+    max-width: 52ch;
     margin: 0 auto;
-    opacity: 0.8;
+    opacity: 0.85;
   }
-  
+
+  /* ---------- GENERIC SECTIONS ---------- */
   .section {
-    max-width: 600px;
+    padding: 6rem 2rem;
+  }
+
+  .section--alt {
+    background: var(--paper-deep);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section__inner {
+    max-width: 56rem;
     margin: 0 auto;
   }
-  
-  .form-group {
-    margin-bottom: 24px;
+
+  .section__head {
+    max-width: 44rem;
+    margin: 0 auto 3rem;
+    text-align: center;
   }
-  
-  label {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--text, #111111);
+
+  .section__head .eyebrow {
+    margin-bottom: 1rem;
+  }
+
+  .section__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .prose {
+    max-width: 44rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .prose p {
+    font-size: 1.05rem;
+    margin: 0 0 1.25rem;
+    opacity: 0.85;
+  }
+
+  .prose p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ---------- CONTACT METHODS ---------- */
+  .methods {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+  }
+
+  .method {
+    padding: 2.5rem 2.5rem 2rem;
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    text-align: left;
+    background: var(--paper);
+  }
+
+  .method:last-child {
+    border-right: none;
+  }
+
+  .method__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1rem;
+  }
+
+  .method__link {
+    display: inline-block;
+    font-family: var(--serif);
+    font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+    line-height: 1.25;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 3px;
+    margin: 0 0 1.25rem;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .method__link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .method__note {
     font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0;
+    opacity: 0.85;
   }
-  
-  input, select, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--border, #E5E5E5);
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 1rem;
-    background: white;
+
+  /* ---------- ENQUIRY TYPES ---------- */
+  .enquiries {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
   }
-  
-  input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: var(--gold, #D4AF37);
+
+  .enquiry {
+    display: block;
+    padding: 2.5rem 2.5rem 2rem;
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    text-align: left;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--paper);
+    transition: background 0.4s ease;
   }
-  
-  .checkbox {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
+
+  .enquiry:nth-child(2n) {
+    border-right: none;
   }
-  
-  .checkbox input {
-    width: auto;
-    margin-top: 3px;
+
+  .enquiry:hover {
+    background: var(--paper-deep);
   }
-  
+
+  .enquiry__title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+    line-height: 1.25;
+    margin: 0 0 1rem;
+  }
+
+  .enquiry__body {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0 0 1.25rem;
+    opacity: 0.85;
+  }
+
+  .enquiry__cta {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 3px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .enquiry:hover .enquiry__cta {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* ---------- CTA (dark) ---------- */
   .cta {
-    background: var(--gold, #D4AF37);
-    color: #111111;
-    border: none;
-    padding: 14px 36px;
-    border-radius: 40px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 6rem 2rem;
+    text-align: center;
   }
-  
-  .cta:hover {
-    background: #c9a62f;
-    transform: translateY(-2px);
+
+  .cta__inner {
+    max-width: 44rem;
+    margin: 0 auto;
   }
-  
-  @media (max-width: 768px) {
-    .page { padding: 40px 20px; }
-    h1 { font-size: 2.6rem; }
+
+  .cta .eyebrow {
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .cta__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    line-height: 1.2;
+    margin: 0 0 1.25rem;
+  }
+
+  .cta__body {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.55;
+    opacity: 0.85;
+    margin: 0 0 2.5rem;
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn {
+    display: inline-block;
+    padding: 0.95rem 1.9rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .btn--light {
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--paper);
+  }
+
+  .btn--light:hover {
+    background: var(--accent);
+    color: var(--ink);
+    border-color: var(--accent);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 800px) {
+    .methods,
+    .enquiries {
+      grid-template-columns: 1fr;
+    }
+
+    .method,
+    .enquiry {
+      border-right: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .header {
+      padding: 7rem 1.5rem 3rem;
+      min-height: 50vh;
+    }
+
+    .section,
+    .cta {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .method,
+    .enquiry {
+      padding: 2rem 1.5rem 1.5rem;
+    }
   }
 </style>

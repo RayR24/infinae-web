@@ -1,0 +1,433 @@
+---
+// src/pages/experiences/supper-club.astro
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PrimaryNav from "../../components/PrimaryNav.astro";
+import Footer from "../../components/Footer.astro";
+
+const description =
+  "Join The Supper Club by Infinae on 03 December 2026 at The Marabi Club's new home in Steyn City for five courses, wine pairings, live jazz and good company.";
+
+const event = {
+  name: "The Supper Club by Infinae at The Marabi Club",
+  edition: "Edition 01",
+  date: "Thursday, 03 December 2026",
+  dateISO: "2026-12-03T18:00:00+02:00",
+  arrive: "Arrive at 18h00",
+  dinner: "Dinner from 18h30",
+  venue: "The Marabi Club",
+  address: "5 Central Lane, City Centre lower piazza, Steyn City",
+  location: "Steyn City, Johannesburg",
+  experience: "Five courses, wine pairings and live jazz",
+  price: "R1 350 per guest",
+  priceRaw: "1350",
+  image: "/images/experiences/marabi-club.jpg",
+  imageAlt: "The Marabi Club supper club evening at Steyn City",
+  email:
+    "mailto:hello@infinae.co.za?subject=Supper%20Club%20booking%20enquiry%20for%2003%20December%202026",
+  instagram: "https://www.instagram.com/infinaegroup/",
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  name: event.name,
+  description,
+  startDate: event.dateISO,
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+  eventStatus: "https://schema.org/EventScheduled",
+  location: {
+    "@type": "Place",
+    name: event.venue,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: event.address,
+      addressLocality: "Johannesburg",
+      addressRegion: "Gauteng",
+      addressCountry: "ZA",
+    },
+  },
+  organizer: {
+    "@type": "Organization",
+    name: "Infinae",
+    url: "https://www.infinae.co.za",
+  },
+  offers: {
+    "@type": "Offer",
+    price: event.priceRaw,
+    priceCurrency: "ZAR",
+    url: "https://www.infinae.co.za/experiences/supper-club",
+  },
+};
+---
+
+<BaseLayout title="The Supper Club" description={description} structuredData={structuredData}>
+  <PrimaryNav />
+
+  <main id="main" class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <p class="eyebrow">The Supper Club </p>
+      <h1 class="header__title">
+        There is always<br /><em>a place at the table.</em>
+      </h1>
+      <p class="header__lede">
+        A gathering for people who enjoy good food, thoughtful conversation and
+        discovering Johannesburg one restaurant at a time.
+      </p>
+    </header>
+
+    <!-- OPENING -->
+    <section class="opening" aria-label="About the Supper Club">
+      <div class="opening__inner">
+        <p class="lede">More than a dinner reservation.</p>
+        <p>
+          The Supper Club by Infinae brings food lovers together around one table.
+          Each gathering takes us to a restaurant worth discovering, with space to
+          share a meal, enjoy the atmosphere and meet someone new.
+        </p>
+        <p>
+          Come on your own or bring a friend. The table is open to everyone who
+          enjoys good company and a memorable evening out.
+        </p>
+      </div>
+    </section>
+
+    <!-- EVENT PICTURE -->
+    <section class="image-band" aria-label="The Marabi Club">
+      <div class="image-band__frame">
+        <img src={event.image} alt={event.imageAlt} loading="eager" />
+      </div>
+    </section>
+
+    <!-- UPCOMING EVENT -->
+    <section class="event" id="upcoming" aria-labelledby="event-title">
+      <div class="event__inner">
+        <header class="event__head">
+          <p class="eyebrow">{event.date}</p>
+          <h2 id="event-title" class="event__title">An evening at Marabi.</h2>
+        </header>
+
+        <p class="event__intro">
+          Join us at The Marabi Club's new home in Steyn City for an evening of
+          five courses with wine pairings, live jazz and easy conversation.
+        </p>
+
+        <dl class="details">
+          <div class="detail">
+            <dt>Date</dt>
+            <dd>{event.date}</dd>
+          </div>
+          <div class="detail">
+            <dt>Time</dt>
+            <dd>{event.arrive} &middot; {event.dinner}</dd>
+          </div>
+          <div class="detail">
+            <dt>Venue</dt>
+            <dd>{event.venue}<br />{event.address}</dd>
+          </div>
+          <div class="detail">
+            <dt>Experience</dt>
+            <dd>{event.experience}</dd>
+          </div>
+          <div class="detail">
+            <dt>Ticket</dt>
+            <dd>{event.price}</dd>
+          </div>
+        </dl>
+
+        <div class="event__actions">
+          <a href={event.email} class="btn btn--primary">Reserve a Seat</a>
+        </div>
+        <p class="event__note">
+          Limited seating. Email us to enquire and receive booking details.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="cta__inner">
+        <p class="eyebrow">Join the Table</p>
+        <h2 id="cta-title" class="cta__title">
+          Come for the food. Stay for the company.
+        </h2>
+        <p class="cta__body">
+          You do not need to arrive knowing anyone. That is part of the pleasure of
+          The Supper Club.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1.5rem;
+  }
+
+  /* ---------- HEADER ---------- */
+  .header {
+    min-height: 62vh;
+    display: grid;
+    place-items: center;
+    padding: 9rem 2rem 3rem;
+    text-align: center;
+  }
+
+  .header__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+    max-width: 22ch;
+  }
+
+  .header__title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header__lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    line-height: 1.5;
+    max-width: 52ch;
+    margin: 0 auto;
+    opacity: 0.85;
+  }
+
+  /* ---------- OPENING ---------- */
+  .opening {
+    padding: 3rem 2rem 4rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .opening__inner {
+    max-width: 44rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    line-height: 1.4;
+    margin: 0 0 2rem;
+  }
+
+  .opening p:not(.lede) {
+    font-size: 1.05rem;
+    margin: 0 0 1.25rem;
+    opacity: 0.85;
+  }
+
+  .opening p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ---------- IMAGE BAND ---------- */
+  .image-band {
+    padding: 0 2rem 6rem;
+  }
+
+  .image-band__frame {
+    max-width: 72rem;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--paper-deep);
+    border: 1px solid var(--rule);
+  }
+
+  .image-band__frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ---------- EVENT ---------- */
+  .event {
+    padding: 6rem 2rem;
+    background: var(--paper-deep);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .event__inner {
+    max-width: 44rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .event__head {
+    margin-bottom: 2rem;
+  }
+
+  .event__head .eyebrow {
+    margin-bottom: 1rem;
+  }
+
+  .event__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .event__intro {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0 0 2.5rem;
+    opacity: 0.85;
+  }
+
+  /* ---------- DETAILS ---------- */
+  .details {
+    margin: 0 0 2.5rem;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+    text-align: left;
+  }
+
+  .detail {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .detail dt {
+    flex: 0 0 7rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.55;
+    padding-top: 0.2rem;
+  }
+
+  .detail dd {
+    margin: 0;
+    text-align: right;
+    font-size: 1rem;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+
+  .event__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .event__note {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--ink);
+    opacity: 0.6;
+    margin: 1.5rem 0 0;
+  }
+
+  /* ---------- CTA (dark, end of page) ---------- */
+  .cta {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .cta__inner {
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+
+  .cta .eyebrow {
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .cta__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    line-height: 1.2;
+    margin: 0 0 1.25rem;
+  }
+
+  .cta__body {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.55;
+    opacity: 0.85;
+    margin: 0;
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn {
+    display: inline-block;
+    padding: 0.95rem 1.9rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .btn--primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent);
+    color: var(--ink);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 600px) {
+    .header {
+      padding: 7rem 1.5rem 3rem;
+      min-height: 50vh;
+    }
+
+    .opening,
+    .image-band,
+    .event,
+    .cta {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .detail {
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .detail dd {
+      text-align: left;
+    }
+  }
+</style>

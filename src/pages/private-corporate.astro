@@ -1,0 +1,344 @@
+---
+// src/pages/private-corporate.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PrimaryNav from "../components/PrimaryNav.astro";
+import Footer from "../components/Footer.astro";
+
+const description =
+  "Infinae creates culinary experiences for private clients, companies and brands, including private dinners, celebrations, client gatherings, brand launches, VIP experiences, tastings and cocktail events.";
+
+const occasions = [
+  "Private dinner",
+  "Celebration",
+  "Client gathering",
+  "Brand launch",
+  "VIP experience",
+  "Tasting",
+  "Cocktail event",
+];
+
+const partners = [
+  "Chefs",
+  "Venues",
+  "Producers",
+  "Sommeliers",
+  "Service teams",
+  "Creative partners",
+];
+---
+
+<BaseLayout title="Private & Corporate" description={description}>
+  <PrimaryNav />
+
+  <main id="main" class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <p class="eyebrow">Private &amp; Corporate</p>
+      <h1 class="header__title">
+        Culinary experiences for<br /><em>private clients, companies and brands.</em>
+      </h1>
+      <p class="header__lede">
+        Food, people and setting, shaped around the occasion.
+      </p>
+    </header>
+
+    <!-- OPENING -->
+    <section class="opening" aria-label="Introduction">
+      <div class="opening__inner">
+        <p class="lede">
+          Starting with the occasion and the people you want to bring together, we
+          shape the food, setting and guest experience around it.
+        </p>
+        <p>
+          From the first idea to the final guest experience, Infinae makes sure the
+          food, people and setting work together naturally.
+        </p>
+      </div>
+    </section>
+
+    <!-- WHAT'S POSSIBLE -->
+    <section class="section section--alt" aria-labelledby="occasions-title">
+      <div class="section__inner">
+        <header class="section__head">
+          <p class="eyebrow">What's Possible</p>
+          <h2 id="occasions-title" class="section__title">
+            Experiences shaped around the occasion.
+          </h2>
+        </header>
+
+        <ul class="tag-list" role="list">
+          {occasions.map((item) => (
+            <li class="tag">{item}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- HOW IT COMES TOGETHER -->
+    <section class="section" aria-labelledby="how-title">
+      <div class="section__inner">
+        <header class="section__head">
+          <p class="eyebrow">How It Comes Together</p>
+          <h2 id="how-title" class="section__title">
+            The right people, in the right place.
+          </h2>
+        </header>
+
+        <div class="prose">
+          <p>
+            We work with selected chefs, venues, producers, sommeliers, service
+            teams and creative partners to bring each experience together.
+          </p>
+        </div>
+
+        <ul class="tag-list" role="list">
+          {partners.map((item) => (
+            <li class="tag">{item}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="cta__inner">
+        <p class="eyebrow">Start a Conversation</p>
+        <h2 id="cta-title" class="cta__title">Tell us about the occasion.</h2>
+        <p class="cta__body">
+          Share the date, the guests and the reason for gathering. We'll help shape
+          the experience from there.
+        </p>
+        <a href="mailto:hello@infinae.co.za" class="btn btn--light">
+          Contact Infinae
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1.5rem;
+  }
+
+  /* ---------- HEADER ---------- */
+  .header {
+    min-height: 62vh;
+    display: grid;
+    place-items: center;
+    padding: 9rem 2rem 3rem;
+    text-align: center;
+  }
+
+  .header__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+    max-width: 22ch;
+  }
+
+  .header__title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header__lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    line-height: 1.5;
+    max-width: 46ch;
+    margin: 0 auto;
+    opacity: 0.85;
+  }
+
+  /* ---------- OPENING ---------- */
+  .opening {
+    padding: 3rem 2rem 4rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .opening__inner {
+    max-width: 44rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    line-height: 1.4;
+    margin: 0 0 2rem;
+  }
+
+  .opening p:not(.lede) {
+    font-size: 1.05rem;
+    margin: 0;
+    opacity: 0.85;
+  }
+
+  /* ---------- GENERIC SECTIONS ---------- */
+  .section {
+    padding: 6rem 2rem;
+  }
+
+  .section--alt {
+    background: var(--paper-deep);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section__inner {
+    max-width: 44rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section__head {
+    margin-bottom: 2.5rem;
+  }
+
+  .section__head .eyebrow {
+    margin-bottom: 1rem;
+  }
+
+  .section__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .prose p {
+    font-size: 1.05rem;
+    margin: 0 0 1.5rem;
+    opacity: 0.85;
+  }
+
+  .prose p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ---------- TAG LIST (unified) ---------- */
+  .tag-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    max-width: 40rem;
+  }
+
+  .tag {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    padding: 0.55rem 1.25rem;
+    border: 1px solid rgba(26, 23, 21, 0.15);
+    background: var(--paper);
+    color: var(--ink);
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+
+  .tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ---------- CTA (dark, end of page) ---------- */
+  .cta {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .cta__inner {
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+
+  .cta .eyebrow {
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .cta__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    line-height: 1.2;
+    margin: 0 0 1.25rem;
+  }
+
+  .cta__body {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.55;
+    opacity: 0.85;
+    margin: 0 0 2.5rem;
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn {
+    display: inline-block;
+    padding: 0.95rem 1.9rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .btn--light {
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--paper);
+  }
+
+  .btn--light:hover {
+    background: var(--accent);
+    color: var(--ink);
+    border-color: var(--accent);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 600px) {
+    .header {
+      padding: 7rem 1.5rem 3rem;
+      min-height: 50vh;
+    }
+
+    .opening,
+    .section,
+    .cta {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .tag {
+      font-size: 0.95rem;
+      padding: 0.45rem 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,532 @@
+---
+// src/pages/experiences.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PrimaryNav from "../components/PrimaryNav.astro";
+import Footer from "../components/Footer.astro";
+
+const description =
+  "Infinae creates dining experiences that bring people together around food, hospitality and conversation, including The Supper Club and limited Infinae Editions.";
+
+const upcoming = {
+  name: "Second Table",
+  description: "Details to be announced.",
+  date: "March",
+  location: "To be announced",
+  href: "/experiences/second-table",
+};
+
+const past = {
+  title: "The First Table",
+  series: "Infinae Editions",
+  description:
+    "The First Table was the first Infinae edition, an afternoon of caviar, wine, fine dining and guided conversation in a private dining room at Four Seasons Hotel The Westcliff.",
+  instagramUrl: "https://www.instagram.com/infinaegroup",
+};
+---
+
+<BaseLayout title="Experiences" description={description}>
+  <PrimaryNav />
+
+  <main id="main" class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <p class="eyebrow">Experiences</p>
+      <h1 class="header__title">
+        Dining experiences that<br /><em>bring people together.</em>
+      </h1>
+      <p class="header__lede">
+        Infinae creates dining experiences around food, hospitality and
+        conversation.
+      </p>
+    </header>
+
+    <!-- OPENING -->
+    <section class="opening" aria-label="Introduction">
+      <div class="opening__inner">
+        <p class="lede">
+          The Supper Club is recurring and easy to join. Infinae Editions are more
+          limited, built around a particular idea, chef, place or occasion.
+        </p>
+        <p>
+          Each experience is different, but the intention remains the same: to
+          create something that feels considered from arrival to departure.
+        </p>
+      </div>
+    </section>
+
+    <!-- UPCOMING EXPERIENCE -->
+    <section class="featured" id="upcoming" aria-labelledby="upcoming-title">
+      <div class="featured__inner">
+        <p class="eyebrow">Upcoming Experience</p>
+        <h2 id="upcoming-title" class="featured__title">{upcoming.name}</h2>
+        <p class="featured__body">{upcoming.description}</p>
+        <dl class="featured__meta">
+          <div>
+            <dt>Date</dt>
+            <dd>{upcoming.date}</dd>
+          </div>
+          <div>
+            <dt>Location</dt>
+            <dd>{upcoming.location}</dd>
+          </div>
+        </dl>
+        <a href={upcoming.href} class="btn btn--primary">View Experience</a>
+      </div>
+    </section>
+
+    <!-- OUR EXPERIENCES (Supper Club + Editions combined) -->
+    <section class="section" aria-labelledby="experiences-title">
+      <div class="section__inner">
+        <header class="section__head">
+          <p class="eyebrow">Our Experiences</p>
+          <h2 id="experiences-title" class="section__title">
+            Two ways to gather around the table.
+          </h2>
+        </header>
+
+        <div class="offerings">
+          <!-- The Supper Club -->
+          <article class="offering">
+            <p class="offering__label">Recurring Series</p>
+            <h3 class="offering__title">The Supper Club</h3>
+            <p class="offering__body">
+              A recurring dining series held at a selected restaurant each month.
+              Discover new places, meet people and enjoy a shared dining experience
+              around the table.
+            </p>
+            <p class="offering__body">
+              The restaurant, menu and setting may change, but the focus remains on
+              good food, conversation and creating a reason for people to return.
+            </p>
+            <a href="/experiences/supper-club" class="offering__link">
+              View Upcoming Supper Club
+            </a>
+          </article>
+
+          <!-- Infinae Editions -->
+          <article class="offering">
+            <p class="offering__label">Limited Editions</p>
+            <h3 class="offering__title">Infinae Editions</h3>
+            <p class="offering__body">
+              A smaller number of distinctive dining experiences throughout the
+              year, each built around an idea, chef, place or occasion.
+            </p>
+            <p class="offering__body">
+              An edition may take the form of a private dining room, a chef
+              collaboration, a tasting or a dinner in an unexpected location. New
+              editions are announced as they are developed.
+            </p>
+            <a href="mailto:hello@infinae.co.za" class="offering__link">
+              Join the List
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAST EXPERIENCES -->
+    <section class="section section--alt" aria-labelledby="past-title">
+      <div class="section__inner">
+        <header class="section__head">
+          <p class="eyebrow">Past Experiences</p>
+          <h2 id="past-title" class="section__title">{past.title}</h2>
+        </header>
+
+        <article class="archive">
+          <p class="archive__body">{past.description}</p>
+          <a
+            href={past.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn--outline"
+          >
+            View on Instagram
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- STAY IN TOUCH -->
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="cta__inner">
+        <p class="eyebrow">Stay in Touch</p>
+        <h2 id="cta-title" class="cta__title">Be first to know.</h2>
+        <p class="cta__body">
+          New Supper Club dates and Infinae Editions are announced throughout the
+          year. Join the list to hear about them first.
+        </p>
+        <a href="mailto:hello@infinae.co.za" class="btn btn--light">
+          Join the List
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1.5rem;
+  }
+
+  /* ---------- HEADER ---------- */
+  .header {
+    min-height: 60vh;
+    display: grid;
+    place-items: center;
+    padding: 9rem 2rem 3rem;
+    text-align: center;
+  }
+
+  .header__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.25rem, 6vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+  }
+
+  .header__title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header__lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    line-height: 1.5;
+    max-width: 52ch;
+    margin: 0 auto;
+    opacity: 0.85;
+  }
+
+  /* ---------- OPENING ---------- */
+  .opening {
+    padding: 3rem 2rem 4rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .opening__inner {
+    max-width: 44rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    line-height: 1.4;
+    margin: 0 0 2rem;
+  }
+
+  .opening p:not(.lede) {
+    font-size: 1.05rem;
+    margin: 0;
+    opacity: 0.85;
+  }
+
+  /* ---------- FEATURED (UPCOMING) ---------- */
+  .featured {
+    padding: 5rem 2rem;
+    background: var(--paper-deep);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .featured__inner {
+    max-width: 46rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .featured__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    line-height: 1.1;
+    margin: 0 0 1rem;
+  }
+
+  .featured__body {
+    max-width: 46ch;
+    margin: 0 auto 2rem;
+    opacity: 0.85;
+  }
+
+  .featured__meta {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 0 0 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .featured__meta div {
+    text-align: center;
+  }
+
+  .featured__meta dt {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 0.35rem;
+  }
+
+  .featured__meta dd {
+    margin: 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+  }
+
+  /* ---------- GENERIC SECTIONS ---------- */
+  .section {
+    padding: 6rem 2rem;
+  }
+
+  .section--alt {
+    background: var(--paper-deep);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section__inner {
+    max-width: 56rem;
+    margin: 0 auto;
+  }
+
+  .section__head {
+    max-width: 44rem;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+
+  .section__head .eyebrow {
+    margin-bottom: 1rem;
+  }
+
+  .section__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  /* ---------- OFFERINGS (2-column) ---------- */
+  .offerings {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .offering {
+    padding: 3rem 2.5rem 2.5rem;
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    text-align: left;
+  }
+
+  .offering:last-child {
+    border-right: none;
+  }
+
+  .offering__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1.25rem;
+  }
+
+  .offering__title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+    line-height: 1.25;
+    margin: 0 0 1.25rem;
+  }
+
+  .offering__body {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0 0 1.25rem;
+    opacity: 0.85;
+  }
+
+  .offering__link {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 3px;
+    margin-top: 0.5rem;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .offering__link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* ---------- ARCHIVE ---------- */
+  .archive {
+    max-width: 40rem;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid var(--rule);
+    padding: 3rem 2.5rem;
+    background: var(--paper);
+  }
+
+  .archive__tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1.5rem;
+  }
+
+  .archive__body {
+    font-size: 1rem;
+    line-height: 1.65;
+    margin: 0 0 2rem;
+    opacity: 0.85;
+  }
+
+  /* ---------- CTA (dark, end of page) ---------- */
+  .cta {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .cta__inner {
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+
+  .cta .eyebrow {
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .cta__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    line-height: 1.2;
+    margin: 0 0 1.25rem;
+  }
+
+  .cta__body {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.55;
+    opacity: 0.85;
+    margin: 0 0 2.5rem;
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn {
+    display: inline-block;
+    padding: 0.95rem 1.9rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .btn--primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .btn--primary:hover {
+    background: var(--accent);
+    color: var(--ink);
+  }
+
+  .btn--outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+
+  .btn--outline:hover {
+    background: var(--accent);
+    color: var(--ink);
+    border-color: var(--accent);
+  }
+
+  .btn--light {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .btn--light:hover {
+    background: var(--accent);
+    color: var(--ink);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 800px) {
+    .offerings {
+      grid-template-columns: 1fr;
+    }
+
+    .offering {
+      border-right: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .header {
+      padding: 7rem 1.5rem 3rem;
+      min-height: 50vh;
+    }
+
+    .opening,
+    .featured,
+    .section,
+    .cta {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .archive {
+      padding: 2rem 1.5rem;
+    }
+
+    .offering {
+      padding: 2.5rem 1.5rem 2rem;
+    }
+
+    .prose p,
+    .archive__body {
+      font-size: 1rem;
+    }
+  }
+</style>
